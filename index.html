@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis XV</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f8f4f0;
+  color: #574841;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+section {
+  padding: 65px 22px;
+  max-width: 750px;
+  margin: auto;
+}
+
+h1, h2 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  color: #987568;
+}
+
+h1 { font-size: 46px; }
+h2 { font-size: 32px; }
+
+p {
+  line-height: 1.8;
+  color: #78665e;
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 430px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 180px 180px 12px 12px;
+}
+
+button {
+  background: #b99b8e;
+  border: none;
+  padding: 14px 28px;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.art img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.card {
+  background: #fffaf6;
+  padding: 28px;
+  border-radius: 18px;
+}
+
+footer {
+  padding: 30px;
+  color: #987568;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <p>UNA FECHA · UN SUEÑO · UNA HISTORIA</p>
+  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80" alt="Foto principal">
+  <h1>Mis XV años</h1>
+  <p>Un sueño que quiero compartir contigo</p>
+  <button onclick="document.getElementById('historia').scrollIntoView({behavior:'smooth'})">
+    Descubrir mi historia
+  </button>
+</section>
+
+<section id="historia">
+  <h2>Mi historia</h2>
+  <p>15 años de recuerdos, aventuras, sueños y momentos que guardo en mi corazón.</p>
+
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" alt="Recuerdo 1">
+    <img src="https://images.unsplash.com/photo-1503919005314-30d93d07b5a4?auto=format&fit=crop&w=600&q=80" alt="Recuerdo 2">
+    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Recuerdo 3">
+    <img src="https://images.unsplash.com/photo-1476231682828-37e571bc7c37?auto=format&fit=crop&w=600&q=80" alt="Recuerdo 4">
+  </div>
+</section>
+
+<section class="art">
+  <h2>Mi arte</h2>
+  <p>Un pequeño rincón de mi mundo creativo.</p>
+  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80" alt="Arte y creatividad">
+</section>
+
+<section>
+  <h2>Mis XV</h2>
+  <p>Un día mágico, una noche inolvidable.</p>
+
+  <div class="card">
+    <p>✧ FECHA ✧</p>
+    <h2>00 · 00 · 2027</h2>
+
+    <p>✧ HORARIO ✧</p>
+    <p>00:00 hs</p>
+
+    <p>✧ LUGAR ✧</p>
+    <p>Nombre del salón</p>
+    <p>Dirección del evento</p>
+
+    <button onclick="window.open('https://maps.google.com','_blank')">
+      Cómo llegar
+    </button>
+  </div>
+</section>
+
+<section>
+  <h2>Mi regalo</h2>
+  <p>Tu presencia es mi regalo más especial. Si deseas regalarme algo más, aquí te comparto mi alias.</p>
+
+  <div class="card">
+    <p>ALIAS</p>
+    <h3 id="alias">mi.alias.ejemplo</h3>
+    <button onclick="copiarAlias()">Copiar alias</button>
+  </div>
+</section>
+
+<footer>
+  Con amor, mis XV años ♡
+</footer>
+
+<script>
+function copiarAlias() {
+  navigator.clipboard.writeText(
+    document.getElementById('alias').innerText
+  ).then(() => alert('¡Alias copiado!'));
+}
+</script>
+
+</body>
+</html>
