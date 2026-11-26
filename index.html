@@ -29,7 +29,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
 
-  /* FONDO VISIBLE DE TODA LA PAGINA */
   background-color: var(--fondo);
   background-image:
     linear-gradient(rgba(250,246,242,.38), rgba(250,246,242,.38)),
@@ -277,6 +276,86 @@ p {
   margin: 30px auto;
 }
 
+/* VIDEO Y MENSAJES */
+
+.video-box {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 12px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid #e4d4cb;
+  border-radius: 8px;
+}
+
+.video-box video {
+  display: block;
+  width: 100%;
+  max-height: 550px;
+  border-radius: 5px;
+  background: #000;
+}
+
+.message-card {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid #e4d4cb;
+  border-radius: 8px;
+}
+
+.message-input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #e4d4cb;
+  border-radius: 5px;
+  background: rgba(250,246,242,.7);
+  color: var(--texto);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.message-input:focus {
+  border-color: var(--detalle);
+}
+
+textarea.message-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.messages-list {
+  max-width: 650px;
+  margin: 35px auto;
+  text-align: left;
+}
+
+.saved-message {
+  background: rgba(255,255,255,.88);
+  border-left: 2px solid var(--rosa);
+  padding: 20px;
+  margin: 18px 0;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+.saved-message h3 {
+  color: var(--detalle);
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+
+.saved-message p {
+  margin: 0;
+}
+
+.no-messages {
+  font-size: 13px;
+  opacity: .7;
+}
+
 /* REGALO */
 
 .gift-card {
@@ -362,6 +441,10 @@ footer {
 
   .alias {
     font-size: 32px;
+  }
+
+  .message-card {
+    padding: 30px 20px;
   }
 
   body {
@@ -509,6 +592,73 @@ footer {
 
 </section>
 
+<!-- VIDEO -->
+
+<section class="center" id="video">
+
+  <p class="eyebrow">Un recuerdo especial</p>
+
+  <h2 class="section-title">Un poquito de mí</h2>
+
+  <p class="section-description">
+    Un recuerdo que quiero compartir con ustedes.
+  </p>
+
+  <div class="video-box">
+
+    <video controls preload="metadata" playsinline>
+      <source src="video.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+
+  </div>
+
+</section>
+
+<!-- MENSAJES -->
+
+<section class="center" id="mensajes">
+
+  <p class="eyebrow">Palabras que quedan en el corazón</p>
+
+  <h2 class="section-title">Dejame un mensaje</h2>
+
+  <p class="section-description">
+    Me encantaría guardar unas palabras tuyas
+    para recordar este momento tan especial.
+  </p>
+
+  <div class="message-card">
+
+    <input
+      type="text"
+      id="nombreMensaje"
+      class="message-input"
+      placeholder="Tu nombre"
+      maxlength="60">
+
+    <textarea
+      id="textoMensaje"
+      class="message-input"
+      placeholder="Escribí tu mensaje para Francesca..."
+      maxlength="500"></textarea>
+
+    <button class="btn" onclick="guardarMensaje()">
+      GUARDAR MENSAJE
+    </button>
+
+  </div>
+
+  <div class="messages-list" id="listaMensajes">
+
+    <p class="no-messages">
+      Tus mensajes aparecerán aquí.
+    </p>
+
+  </div>
+
+</section>
+
 <!-- REGALO -->
 
 <section class="center" id="regalo">
@@ -638,6 +788,79 @@ crearGaleria(
   'arteCounter',
   'art-page'
 );
+
+/* MENSAJES PROVISIONALES EN ESTE NAVEGADOR */
+
+function guardarMensaje() {
+
+  const nombre = document.getElementById('nombreMensaje').value.trim();
+  const mensaje = document.getElementById('textoMensaje').value.trim();
+
+  if (!nombre || !mensaje) {
+    alert('Por favor, completá tu nombre y tu mensaje.');
+    return;
+  }
+
+  const mensajes = JSON.parse(
+    localStorage.getItem('mensajesFrancesca') || '[]'
+  );
+
+  mensajes.unshift({
+    nombre: nombre,
+    mensaje: mensaje
+  });
+
+  localStorage.setItem(
+    'mensajesFrancesca',
+    JSON.stringify(mensajes)
+  );
+
+  document.getElementById('nombreMensaje').value = '';
+  document.getElementById('textoMensaje').value = '';
+
+  mostrarMensajes();
+
+  alert('¡Tu mensaje quedó guardado en este navegador!');
+}
+
+function mostrarMensajes() {
+
+  const contenedor = document.getElementById('listaMensajes');
+
+  const mensajes = JSON.parse(
+    localStorage.getItem('mensajesFrancesca') || '[]'
+  );
+
+  contenedor.innerHTML = '';
+
+  if (mensajes.length === 0) {
+
+    contenedor.innerHTML =
+      '<p class="no-messages">Todavía no hay mensajes. ¡Sé el primero en dejar uno!</p>';
+
+    return;
+  }
+
+  mensajes.forEach(function(item) {
+
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'saved-message';
+
+    const nombre = document.createElement('h3');
+    nombre.textContent = item.nombre;
+
+    const texto = document.createElement('p');
+    texto.textContent = item.mensaje;
+
+    tarjeta.appendChild(nombre);
+    tarjeta.appendChild(texto);
+
+    contenedor.appendChild(tarjeta);
+
+  });
+}
+
+mostrarMensajes();
 
 /* COPIAR ALIAS */
 
