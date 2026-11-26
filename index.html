@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MIS XI | FRENCESCA</title>
+<title>MIS XI | FRANCESCA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -13,6 +14,7 @@
   --rosa: #d8bcb2;
   --texto: #65534d;
   --detalle: #a88578;
+  --blanco: #fff;
 }
 
 * {
@@ -29,25 +31,14 @@ body {
 }
 
 section {
-  padding: 80px 24px;
-  max-width: 760px;
+  padding: 85px 24px;
+  max-width: 850px;
   margin: auto;
 }
 
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-}
-
-h1 {
-  font-size: 64px;
-  line-height: 1;
-  margin: 25px 0;
-}
-
-h2 {
-  font-size: 44px;
-  margin-bottom: 20px;
 }
 
 p {
@@ -61,9 +52,15 @@ p {
   text-transform: uppercase;
 }
 
+.center {
+  text-align: center;
+}
+
+/* PORTADA */
+
 .hero {
   min-height: 100vh;
-  padding: 35px 20px;
+  padding: 45px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,63 +71,155 @@ p {
 .hero img {
   width: 100%;
   max-width: 420px;
-  height: 500px;
+  height: 480px;
   object-fit: cover;
-  border-radius: 220px 220px 10px 10px;
+  border-radius: 220px 220px 8px 8px;
 }
 
 .hero .eyebrow {
-  margin-top: 35px;
+  margin-top: 30px;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(80px, 17vw, 145px);
+  line-height: .9;
+  letter-spacing: 5px;
+  margin: 25px 0 5px;
+  color: var(--detalle);
+}
+
+.hero-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin: 20px 0;
 }
 
 .hero p {
   max-width: 330px;
 }
 
+/* BOTONES */
+
 .btn {
   display: inline-block;
   text-decoration: none;
   background: var(--detalle);
   color: white;
-  padding: 14px 25px;
+  padding: 15px 28px;
   border-radius: 40px;
   border: 0;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 11px;
+  letter-spacing: 2px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 20px;
+  transition: .3s;
 }
 
-.center {
-  text-align: center;
+.btn:hover {
+  background: var(--texto);
+  transform: translateY(-2px);
 }
+
+/* HISTORIA */
 
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 35px;
+  gap: 18px;
+  margin-top: 40px;
 }
 
 .gallery img {
   width: 100%;
-  height: 260px;
+  height: 300px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .gallery img:nth-child(even) {
-  margin-top: 25px;
+  margin-top: 35px;
 }
 
-.art-img {
+/* ARTE */
+
+.art-gallery {
+  margin-top: 35px;
+}
+
+.art-gallery img {
   width: 100%;
   max-height: 600px;
-  object-fit: cover;
+  object-fit: contain;
+  margin: 20px auto;
   border-radius: 5px;
-  margin-top: 25px;
 }
+
+/* FECHA */
+
+.event-card {
+  position: relative;
+  background: var(--blanco);
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 55px 30px;
+  border: 1px solid #e6d5ce;
+  outline: 1px solid #e6d5ce;
+  outline-offset: 8px;
+  border-radius: 3px;
+}
+
+.event-top {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--detalle);
+}
+
+.event-month {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  letter-spacing: 3px;
+  margin: 15px 0;
+}
+
+.event-day {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 100px;
+  line-height: 1;
+  color: var(--detalle);
+  margin: 10px 0;
+}
+
+.event-weekday {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.event-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.event-location {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--rosa);
+  margin: 30px auto;
+}
+
+/* REGALO */
 
 .box {
   background: white;
@@ -139,26 +228,44 @@ p {
   margin-top: 30px;
 }
 
-.divider {
-  width: 50px;
-  height: 1px;
-  background: var(--rosa);
-  margin: 25px auto;
+.alias-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  letter-spacing: 2px;
 }
 
+/* PIE */
+
 footer {
-  padding: 45px 20px;
+  padding: 55px 20px;
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
+  font-size: 28px;
   color: var(--detalle);
 }
 
+/* CELULAR */
+
 @media(max-width:480px) {
-  h1 { font-size: 54px; }
-  h2 { font-size: 38px; }
-  .hero img { height: 430px; }
-  .gallery img { height: 210px; }
+  section {
+    padding: 65px 20px;
+  }
+
+  .hero img {
+    height: 400px;
+  }
+
+  .gallery img {
+    height: 220px;
+  }
+
+  .event-card {
+    padding: 45px 20px;
+  }
+
+  .event-day {
+    font-size: 85px;
+  }
 }
 </style>
 </head>
@@ -166,12 +273,16 @@ footer {
 <body>
 
 <!-- PORTADA -->
+
 <section class="hero">
-  <p class="eyebrow">MIS XI</p>
 
-  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Portada">
+  <p class="eyebrow">Una celebración · Un sueño</p>
 
-  <h1>FRENCESCA</h1>
+  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Portada de Francesca">
+
+  <h1 class="hero-title">MIS XI</h1>
+
+  <div class="hero-name">FRANCESCA</div>
 
   <p>
     Un día especial, un sueño y muchos momentos
@@ -179,12 +290,16 @@ footer {
   </p>
 
   <a href="#historia" class="btn">DESCUBRIR</a>
+
 </section>
 
 <!-- HISTORIA -->
+
 <section id="historia" class="center">
+
   <p class="eyebrow">Un viaje en el tiempo</p>
-  <h2>Mi historia</h2>
+
+  <h2 style="font-size:50px;">Mi historia</h2>
 
   <p>
     11 años de risas, aventuras, sueños y personas
@@ -193,48 +308,75 @@ footer {
   </p>
 
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" alt="Recuerdo">
-    <img src="https://images.unsplash.com/photo-1503919005314-30d93d07b5a4?auto=format&fit=crop&w=600&q=80" alt="Recuerdo">
-    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Recuerdo">
-    <img src="https://images.unsplash.com/photo-1476231682828-37e571bc7c37?auto=format&fit=crop&w=600&q=80" alt="Recuerdo">
+
+    <img src="h1.jpg" alt="Recuerdo de Francesca">
+
+    <img src="h2.jpg" alt="Recuerdo de Francesca">
+
+    <img src="h3.jpg" alt="Recuerdo de Francesca">
+
+    <img src="h4.jpg" alt="Recuerdo de Francesca">
+
   </div>
+
 </section>
 
 <!-- ARTE -->
+
 <section class="center">
+
   <p class="eyebrow">Mi pequeño universo</p>
-  <h2>Mi arte</h2>
+
+  <h2 style="font-size:50px;">Mi arte</h2>
 
   <p>
     En cada dibujo encuentro una forma de expresar
     lo que a veces las palabras no pueden decir.
   </p>
 
-  <img class="art-img"
-  src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=85"
-  alt="Arte">
+  <div class="art-gallery">
+
+    <img src="a1.jpg" alt="Dibujo de Francesca">
+
+    <img src="a2.jpg" alt="Dibujo de Francesca">
+
+  </div>
+
 </section>
 
 <!-- EVENTO -->
+
 <section class="center">
+
   <p class="eyebrow">Una fecha para recordar</p>
-  <h2>MIS XI</h2>
 
-  <div class="box">
-    <p class="eyebrow">TE ESPERO EL</p>
+  <h2 style="font-size:50px;">MIS XI</h2>
 
-    <h2>SÁBADO 28 DE NOVIEMBRE</h2>
+  <div class="event-card">
 
-    <div class="divider"></div>
-
-    <p class="eyebrow">HORARIO</p>
-    <h3>18:00 HS</h3>
+    <p class="event-top">Te invito a celebrar conmigo</p>
 
     <div class="divider"></div>
 
-    <p class="eyebrow">LUGAR</p>
-    <h3>Zorzal 3725</h3>
-    <p>Campo Salles, Buenos Aires</p>
+    <div class="event-weekday">SÁBADO</div>
+
+    <div class="event-day">28</div>
+
+    <div class="event-month">NOVIEMBRE · 2026</div>
+
+    <div class="divider"></div>
+
+    <div class="event-top">Hora</div>
+
+    <div class="event-time">18:00 HS</div>
+
+    <div class="divider"></div>
+
+    <div class="event-top">Lugar</div>
+
+    <div class="event-location">Zorzal 3725</div>
+
+    <p>Campo Salles · Buenos Aires</p>
 
     <a class="btn"
        href="https://www.google.com/maps/place/Zorzal+3725,+Campo+Salles,+Provincia+de+Buenos+Aires/@-33.4136275,-60.2461301,17z/data=!3m1!4b1!4m6!3m5!1s0x95b760c28ddd7fe3:0x7697bcdcaf1d62e2!8m2!3d-33.413632!4d-60.2435552!16s%2Fg%2F11jyjl12b9?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D"
@@ -242,13 +384,18 @@ footer {
        rel="noopener noreferrer">
       CÓMO LLEGAR
     </a>
+
   </div>
+
 </section>
 
 <!-- REGALO -->
+
 <section class="center">
+
   <p class="eyebrow">Un detalle especial</p>
-  <h2>Mi regalo</h2>
+
+  <h2 style="font-size:50px;">Mi regalo</h2>
 
   <p>
     Tu presencia es mi regalo más importante.
@@ -257,14 +404,17 @@ footer {
   </p>
 
   <div class="box">
+
     <p class="eyebrow">ALIAS</p>
 
-    <h3 id="alias">mi.alias.ejemplo</h3>
+    <div class="alias-text" id="alias">franud</div>
 
     <button class="btn" onclick="copiarAlias()">
       COPIAR ALIAS
     </button>
+
   </div>
+
 </section>
 
 <footer>
