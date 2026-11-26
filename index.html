@@ -4,16 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MIS XI | FRANCESCA</title>
+
+<title>FRANCESCA | MIS XI</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --fondo: #fbf7f4;
-  --rosa: #d8bcb2;
-  --texto: #65534d;
-  --detalle: #a88578;
+  --fondo: #faf6f2;
+  --rosa: #d9c0b7;
+  --texto: #63534c;
+  --detalle: #a58274;
   --blanco: #fff;
 }
 
@@ -24,15 +25,24 @@
 
 body {
   margin: 0;
-  background: var(--fondo);
   color: var(--texto);
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
+  background-color: var(--fondo);
+
+  /* FONDO DE TODA LA PAGINA */
+  background-image:
+    linear-gradient(rgba(250,246,242,.86), rgba(250,246,242,.86)),
+    url('fondo.jpeg');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 section {
-  padding: 85px 24px;
-  max-width: 850px;
+  padding: 90px 24px;
+  max-width: 1100px;
   margin: auto;
 }
 
@@ -60,45 +70,49 @@ p {
 
 .hero {
   min-height: 100vh;
-  padding: 45px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 40px 20px;
 }
 
-.hero img {
+.hero-photo {
   width: 100%;
   max-width: 420px;
-  height: 480px;
+  height: 520px;
   object-fit: cover;
-  border-radius: 220px 220px 8px 8px;
+  object-position: center;
+  border-radius: 230px 230px 5px 5px;
+  box-shadow: 0 15px 50px rgba(90,60,50,.08);
 }
 
-.hero .eyebrow {
-  margin-top: 30px;
+.hero-top {
+  letter-spacing: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(80px, 17vw, 145px);
-  line-height: .9;
+  font-size: clamp(70px, 12vw, 115px);
   letter-spacing: 5px;
-  margin: 25px 0 5px;
+  line-height: .9;
   color: var(--detalle);
+  margin: 35px 0 5px;
 }
 
 .hero-name {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  letter-spacing: 7px;
+  font-size: 14px;
+  letter-spacing: 8px;
   text-transform: uppercase;
   margin: 20px 0;
 }
 
-.hero p {
-  max-width: 330px;
+.hero-text {
+  max-width: 350px;
+  margin: 10px auto;
 }
 
 /* BOTONES */
@@ -108,15 +122,15 @@ p {
   text-decoration: none;
   background: var(--detalle);
   color: white;
-  padding: 15px 28px;
-  border-radius: 40px;
-  border: 0;
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
   cursor: pointer;
   margin-top: 20px;
-  transition: .3s;
+  transition: .3s ease;
 }
 
 .btn:hover {
@@ -124,96 +138,135 @@ p {
   transform: translateY(-2px);
 }
 
-/* HISTORIA */
+/* TITULOS */
 
-.gallery {
+.section-title {
+  font-size: 55px;
+  margin: 15px 0;
+  color: var(--detalle);
+}
+
+.section-description {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* GALERIAS */
+
+.gallery-wrapper {
+  max-width: 1000px;
+  margin: 45px auto 0;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  transition: transform .55s ease;
+}
+
+.gallery-page {
+  flex: 0 0 100%;
+  min-width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-top: 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
 }
 
-.gallery img {
+.gallery-page img {
   width: 100%;
-  height: 300px;
+  height: 320px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 4px;
+  box-shadow: 0 8px 25px rgba(70,50,40,.06);
 }
 
-.gallery img:nth-child(even) {
-  margin-top: 35px;
+.gallery-page img:nth-child(even) {
+  margin-top: 30px;
 }
 
-/* ARTE */
-
-.art-gallery {
-  margin-top: 35px;
-}
-
-.art-gallery img {
-  width: 100%;
-  max-height: 600px;
+.art-page img {
   object-fit: contain;
-  margin: 20px auto;
-  border-radius: 5px;
+  background: rgba(255,255,255,.55);
+}
+
+/* CONTROLES */
+
+.gallery-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.arrow {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--detalle);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--detalle);
+  font-size: 26px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.arrow:hover {
+  background: var(--detalle);
+  color: white;
+}
+
+.counter {
+  font-size: 10px;
+  letter-spacing: 3px;
 }
 
 /* FECHA */
 
 .event-card {
-  position: relative;
-  background: var(--blanco);
-  max-width: 560px;
-  margin: 40px auto 0;
-  padding: 55px 30px;
-  border: 1px solid #e6d5ce;
-  outline: 1px solid #e6d5ce;
+  max-width: 570px;
+  margin: 45px auto 0;
+  padding: 60px 35px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid #e4d4cb;
+  outline: 1px solid #e4d4cb;
   outline-offset: 8px;
-  border-radius: 3px;
 }
 
-.event-top {
-  font-family: 'Montserrat', sans-serif;
+.event-label {
   font-size: 10px;
   letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--detalle);
 }
 
-.event-month {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 23px;
-  letter-spacing: 3px;
-  margin: 15px 0;
-}
-
 .event-day {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 100px;
+  font-size: 115px;
   line-height: 1;
   color: var(--detalle);
-  margin: 10px 0;
+  margin: 20px 0 5px;
 }
 
-.event-weekday {
-  font-size: 12px;
+.event-month {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
   letter-spacing: 4px;
-  text-transform: uppercase;
 }
 
 .event-time {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  margin: 20px 0;
+  font-size: 38px;
 }
 
-.event-location {
+.event-place {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
+  font-size: 30px;
 }
 
 .divider {
-  width: 60px;
+  width: 55px;
   height: 1px;
   background: var(--rosa);
   margin: 30px auto;
@@ -221,42 +274,68 @@ p {
 
 /* REGALO */
 
-.box {
-  background: white;
-  padding: 35px 25px;
-  border-radius: 8px;
-  margin-top: 30px;
+.gift-card {
+  max-width: 480px;
+  margin: 35px auto 0;
+  padding: 40px 25px;
+  background: rgba(255,255,255,.85);
+  border-radius: 5px;
 }
 
-.alias-text {
+.alias {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  letter-spacing: 2px;
+  font-size: 40px;
+  letter-spacing: 3px;
+  margin: 15px 0;
 }
 
 /* PIE */
 
 footer {
-  padding: 55px 20px;
+  padding: 65px 20px;
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
+  font-size: 30px;
   color: var(--detalle);
 }
 
-/* CELULAR */
+/* CELULARES */
 
-@media(max-width:480px) {
+@media(max-width:700px) {
+
   section {
-    padding: 65px 20px;
+    padding: 70px 20px;
   }
 
-  .hero img {
-    height: 400px;
+  .hero-photo {
+    height: 430px;
+    max-width: 340px;
   }
 
-  .gallery img {
-    height: 220px;
+  .hero-title {
+    font-size: 78px;
+    letter-spacing: 2px;
+  }
+
+  .hero-name {
+    letter-spacing: 5px;
+  }
+
+  .section-title {
+    font-size: 45px;
+  }
+
+  .gallery-page {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-page img {
+    height: 230px;
+  }
+
+  .gallery-page img:nth-child(even) {
+    margin-top: 20px;
   }
 
   .event-card {
@@ -264,7 +343,33 @@ footer {
   }
 
   .event-day {
-    font-size: 85px;
+    font-size: 90px;
+  }
+
+  .event-month {
+    font-size: 23px;
+  }
+
+  .event-time {
+    font-size: 32px;
+  }
+
+  .alias {
+    font-size: 32px;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+}
+
+@media(max-width:380px) {
+  .gallery-page img {
+    height: 190px;
+  }
+
+  .hero-photo {
+    height: 370px;
   }
 }
 </style>
@@ -276,17 +381,18 @@ footer {
 
 <section class="hero">
 
-  <p class="eyebrow">Una celebración · Un sueño</p>
+  <p class="hero-top">Una celebración · Un sueño</p>
 
-  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Portada de Francesca">
+  <img class="hero-photo" src="portada.jpeg" alt="Francesca">
 
   <h1 class="hero-title">MIS XI</h1>
 
   <div class="hero-name">FRANCESCA</div>
 
-  <p>
-    Un día especial, un sueño y muchos momentos
-    que quiero compartir con las personas que amo.
+  <p class="hero-text">
+    Once años de sueños, momentos inolvidables
+    y muchas historias por compartir.
+    Te invito a celebrar conmigo.
   </p>
 
   <a href="#historia" class="btn">DESCUBRIR</a>
@@ -299,23 +405,27 @@ footer {
 
   <p class="eyebrow">Un viaje en el tiempo</p>
 
-  <h2 style="font-size:50px;">Mi historia</h2>
+  <h2 class="section-title">Mi historia</h2>
 
-  <p>
-    11 años de risas, aventuras, sueños y personas
-    que hicieron de mi vida algo maravilloso.
-    Hoy quiero compartir un pedacito de mi historia.
+  <p class="section-description">
+    Cada fotografía guarda un recuerdo, una sonrisa
+    y un pedacito de mi vida.
+    Gracias por acompañarme en este viaje.
   </p>
 
-  <div class="gallery">
+  <div class="gallery-wrapper" id="historiaGallery">
 
-    <img src="h1.jpg" alt="Recuerdo de Francesca">
+    <div class="gallery-track"></div>
 
-    <img src="h2.jpg" alt="Recuerdo de Francesca">
+  </div>
 
-    <img src="h3.jpg" alt="Recuerdo de Francesca">
+  <div class="gallery-controls">
 
-    <img src="h4.jpg" alt="Recuerdo de Francesca">
+    <button class="arrow" onclick="mover('historiaGallery',-1)">‹</button>
+
+    <span class="counter" id="historiaCounter"></span>
+
+    <button class="arrow" onclick="mover('historiaGallery',1)">›</button>
 
   </div>
 
@@ -323,22 +433,30 @@ footer {
 
 <!-- ARTE -->
 
-<section class="center">
+<section class="center" id="arte">
 
   <p class="eyebrow">Mi pequeño universo</p>
 
-  <h2 style="font-size:50px;">Mi arte</h2>
+  <h2 class="section-title">Mi arte</h2>
 
-  <p>
-    En cada dibujo encuentro una forma de expresar
-    lo que a veces las palabras no pueden decir.
+  <p class="section-description">
+    Un espacio para mostrar aquello que imagino,
+    creo y expreso a través de mis dibujos.
   </p>
 
-  <div class="art-gallery">
+  <div class="gallery-wrapper" id="arteGallery">
 
-    <img src="a1.jpg" alt="Dibujo de Francesca">
+    <div class="gallery-track"></div>
 
-    <img src="a2.jpg" alt="Dibujo de Francesca">
+  </div>
+
+  <div class="gallery-controls">
+
+    <button class="arrow" onclick="mover('arteGallery',-1)">‹</button>
+
+    <span class="counter" id="arteCounter"></span>
+
+    <button class="arrow" onclick="mover('arteGallery',1)">›</button>
 
   </div>
 
@@ -346,19 +464,19 @@ footer {
 
 <!-- EVENTO -->
 
-<section class="center">
+<section class="center" id="evento">
 
   <p class="eyebrow">Una fecha para recordar</p>
 
-  <h2 style="font-size:50px;">MIS XI</h2>
+  <h2 class="section-title">MIS XI</h2>
 
   <div class="event-card">
 
-    <p class="event-top">Te invito a celebrar conmigo</p>
+    <p class="event-label">Te invito a celebrar conmigo</p>
 
     <div class="divider"></div>
 
-    <div class="event-weekday">SÁBADO</div>
+    <p class="event-label">SÁBADO</p>
 
     <div class="event-day">28</div>
 
@@ -366,15 +484,15 @@ footer {
 
     <div class="divider"></div>
 
-    <div class="event-top">Hora</div>
+    <p class="event-label">HORARIO</p>
 
     <div class="event-time">18:00 HS</div>
 
     <div class="divider"></div>
 
-    <div class="event-top">Lugar</div>
+    <p class="event-label">LUGAR</p>
 
-    <div class="event-location">Zorzal 3725</div>
+    <div class="event-place">Zorzal 3725</div>
 
     <p>Campo Salles · Buenos Aires</p>
 
@@ -391,23 +509,23 @@ footer {
 
 <!-- REGALO -->
 
-<section class="center">
+<section class="center" id="regalo">
 
   <p class="eyebrow">Un detalle especial</p>
 
-  <h2 style="font-size:50px;">Mi regalo</h2>
+  <h2 class="section-title">Mi regalo</h2>
 
-  <p>
+  <p class="section-description">
     Tu presencia es mi regalo más importante.
-    Pero si deseas regalarme algo más,
+    Si deseas regalarme algo más,
     te comparto mi alias.
   </p>
 
-  <div class="box">
+  <div class="gift-card">
 
     <p class="eyebrow">ALIAS</p>
 
-    <div class="alias-text" id="alias">franud</div>
+    <div class="alias" id="alias">franud</div>
 
     <button class="btn" onclick="copiarAlias()">
       COPIAR ALIAS
@@ -422,23 +540,130 @@ footer {
 </footer>
 
 <script>
+
+/* CREACION AUTOMATICA DE GALERIAS */
+
+const galerias = {};
+
+function crearGaleria(id, prefijo, cantidad, contadorId, claseExtra = '') {
+
+  const contenedor = document.getElementById(id);
+  const track = contenedor.querySelector('.gallery-track');
+
+  const totalPaginas = Math.ceil(cantidad / 4);
+
+  galerias[id] = {
+    pagina: 0,
+    total: totalPaginas,
+    contador: document.getElementById(contadorId)
+  };
+
+  for (let pagina = 0; pagina < totalPaginas; pagina++) {
+
+    const slide = document.createElement('div');
+
+    slide.className = 'gallery-page ' + claseExtra;
+
+    const inicio = pagina * 4 + 1;
+    const fin = Math.min(inicio + 3, cantidad);
+
+    for (let numero = inicio; numero <= fin; numero++) {
+
+      const img = document.createElement('img');
+
+      img.src = prefijo + numero + '.jpeg';
+      img.alt = prefijo + ' ' + numero;
+      img.loading = 'lazy';
+
+      slide.appendChild(img);
+
+    }
+
+    track.appendChild(slide);
+
+  }
+
+  actualizar(id);
+}
+
+function actualizar(id) {
+
+  const contenedor = document.getElementById(id);
+  const track = contenedor.querySelector('.gallery-track');
+
+  const datos = galerias[id];
+
+  track.style.transform =
+    'translateX(-' + (datos.pagina * 100) + '%)';
+
+  datos.contador.textContent =
+    (datos.pagina + 1) + ' / ' + datos.total;
+
+}
+
+function mover(id, direccion) {
+
+  const datos = galerias[id];
+
+  datos.pagina += direccion;
+
+  if (datos.pagina < 0) {
+    datos.pagina = datos.total - 1;
+  }
+
+  if (datos.pagina >= datos.total) {
+    datos.pagina = 0;
+  }
+
+  actualizar(id);
+}
+
+/* HISTORIA: 48 FOTOS */
+
+crearGaleria(
+  'historiaGallery',
+  'h',
+  48,
+  'historiaCounter'
+);
+
+/* ARTE: 22 FOTOS */
+
+crearGaleria(
+  'arteGallery',
+  'a',
+  22,
+  'arteCounter',
+  'art-page'
+);
+
+/* COPIAR ALIAS */
+
 function copiarAlias() {
+
   const alias = document.getElementById('alias').innerText;
 
   if (navigator.clipboard && window.isSecureContext) {
+
     navigator.clipboard.writeText(alias)
       .then(() => alert('¡Alias copiado!'))
       .catch(() => copiarAlternativo(alias));
+
   } else {
+
     copiarAlternativo(alias);
+
   }
 }
 
 function copiarAlternativo(texto) {
+
   const area = document.createElement('textarea');
+
   area.value = texto;
   area.style.position = 'fixed';
   area.style.opacity = '0';
+
   document.body.appendChild(area);
   area.select();
 
@@ -451,6 +676,7 @@ function copiarAlternativo(texto) {
 
   area.remove();
 }
+
 </script>
 
 </body>
