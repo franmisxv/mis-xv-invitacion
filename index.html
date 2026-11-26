@@ -104,10 +104,13 @@ p {
 }
 
 .hero-name {
-  font-size: 14px;
-  letter-spacing: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(25px, 5vw, 38px);
+  font-weight: 500;
+  letter-spacing: 7px;
   text-transform: uppercase;
   margin: 20px 0;
+  color: var(--texto);
 }
 
 .hero-text {
@@ -319,6 +322,7 @@ footer {
 
   .hero-name {
     letter-spacing: 5px;
+    font-size: 30px;
   }
 
   .section-title {
@@ -390,7 +394,7 @@ footer {
   <div class="hero-name">FRANCESCA</div>
 
   <p class="hero-text">
-    Once años de sueños, momentos inolvidables
+    Quince años de sueños, momentos inolvidables
     y muchas historias por compartir.
     Te invito a celebrar conmigo.
   </p>
@@ -441,7 +445,7 @@ footer {
 
   <p class="section-description">
     Un espacio para mostrar aquello que imagino,
-    creo y expreso a través de mis dibujos.
+    creo y expreso a través de mis dibujos e instrumentos musicales.
   </p>
 
   <div class="gallery-wrapper" id="arteGallery">
@@ -618,20 +622,20 @@ function mover(id, direccion) {
   actualizar(id);
 }
 
-/* HISTORIA: 48 FOTOS */
+/* HISTORIA: 48 FOTOS CON H MAYUSCULA */
 
 crearGaleria(
   'historiaGallery',
-  'h',
+  'H',
   48,
   'historiaCounter'
 );
 
-/* ARTE: 22 FOTOS */
+/* ARTE: 22 FOTOS CON A MAYUSCULA */
 
 crearGaleria(
   'arteGallery',
-  'a',
+  'A',
   22,
   'arteCounter',
   'art-page'
