@@ -15,7 +15,6 @@
   --rosa: #d9c0b7;
   --texto: #63534c;
   --detalle: #a58274;
-  --blanco: #fff;
 }
 
 * {
@@ -153,7 +152,7 @@ p {
   margin: 0 auto;
 }
 
-/* GALERIAS */
+/* GALERIAS DE FOTOS */
 
 .gallery-wrapper {
   max-width: 1000px;
@@ -192,7 +191,7 @@ p {
   background: rgba(255,255,255,.55);
 }
 
-/* CONTROLES */
+/* CONTROLES DE FOTOS Y VIDEOS */
 
 .gallery-controls {
   display: flex;
@@ -276,24 +275,54 @@ p {
   margin: 30px auto;
 }
 
-/* VIDEO Y MENSAJES */
+/* GALERIA DE VIDEOS */
 
-.video-box {
+.video-gallery {
   max-width: 750px;
-  margin: 40px auto;
+  margin: 45px auto 0;
+  overflow: hidden;
+}
+
+.video-track {
+  display: flex;
+  transition: transform .55s ease;
+}
+
+.video-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
   padding: 12px;
   background: rgba(255,255,255,.7);
   border: 1px solid #e4d4cb;
   border-radius: 8px;
 }
 
-.video-box video {
+.video-slide video {
   display: block;
   width: 100%;
   max-height: 550px;
   border-radius: 5px;
   background: #000;
 }
+
+/* REGALO */
+
+.gift-card {
+  max-width: 480px;
+  margin: 35px auto 0;
+  padding: 40px 25px;
+  background: rgba(255,255,255,.85);
+  border-radius: 5px;
+}
+
+.alias {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  letter-spacing: 3px;
+  margin: 15px 0;
+}
+
+/* MENSAJES */
 
 .message-card {
   max-width: 650px;
@@ -356,31 +385,19 @@ textarea.message-input {
   opacity: .7;
 }
 
-/* REGALO */
+/* FINAL */
 
-.gift-card {
-  max-width: 480px;
-  margin: 35px auto 0;
-  padding: 40px 25px;
-  background: rgba(255,255,255,.85);
-  border-radius: 5px;
-}
-
-.alias {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  letter-spacing: 3px;
-  margin: 15px 0;
-}
-
-/* PIE */
-
-footer {
-  padding: 65px 20px;
+.final-section {
+  padding: 100px 20px;
   text-align: center;
+}
+
+.final-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 30px;
+  font-size: clamp(35px, 6vw, 60px);
   color: var(--detalle);
+  font-weight: 400;
+  line-height: 1.3;
 }
 
 /* CELULARES */
@@ -466,7 +483,7 @@ footer {
 
 <body>
 
-<!-- PORTADA -->
+<!-- 1. PORTADA -->
 
 <section class="hero">
 
@@ -488,7 +505,7 @@ footer {
 
 </section>
 
-<!-- HISTORIA -->
+<!-- 2. MI HISTORIA -->
 
 <section id="historia" class="center">
 
@@ -518,7 +535,7 @@ footer {
 
 </section>
 
-<!-- ARTE -->
+<!-- 3. MI ARTE -->
 
 <section class="center" id="arte">
 
@@ -547,7 +564,37 @@ footer {
 
 </section>
 
-<!-- EVENTO -->
+<!-- 4. VIDEOS -->
+
+<section class="center" id="videos">
+
+  <p class="eyebrow">Un recuerdo especial</p>
+
+  <h2 class="section-title">Un poquito de mí</h2>
+
+  <p class="section-description">
+    Algunos momentos que quiero compartir con ustedes.
+  </p>
+
+  <div class="video-gallery">
+
+    <div class="video-track" id="videoTrack"></div>
+
+  </div>
+
+  <div class="gallery-controls">
+
+    <button class="arrow" onclick="moverVideo(-1)">‹</button>
+
+    <span class="counter" id="videoCounter"></span>
+
+    <button class="arrow" onclick="moverVideo(1)">›</button>
+
+  </div>
+
+</section>
+
+<!-- 5. FECHA -->
 
 <section class="center" id="evento">
 
@@ -592,30 +639,35 @@ footer {
 
 </section>
 
-<!-- VIDEO -->
+<!-- 6. MI REGALO -->
 
-<section class="center" id="video">
+<section class="center" id="regalo">
 
-  <p class="eyebrow">Un recuerdo especial</p>
+  <p class="eyebrow">Un detalle especial</p>
 
-  <h2 class="section-title">Un poquito de mí</h2>
+  <h2 class="section-title">Mi regalo</h2>
 
   <p class="section-description">
-    Un recuerdo que quiero compartir con ustedes.
+    Tu presencia es mi regalo más importante.
+    Si deseas regalarme algo más,
+    te comparto mi alias.
   </p>
 
-  <div class="video-box">
+  <div class="gift-card">
 
-    <video controls preload="metadata" playsinline>
-      <source src="video.mp4" type="video/mp4">
-      Tu navegador no puede reproducir este video.
-    </video>
+    <p class="eyebrow">ALIAS</p>
+
+    <div class="alias" id="alias">franud</div>
+
+    <button class="btn" onclick="copiarAlias()">
+      COPIAR ALIAS
+    </button>
 
   </div>
 
 </section>
 
-<!-- MENSAJES -->
+<!-- 7. PALABRAS Y MENSAJES -->
 
 <section class="center" id="mensajes">
 
@@ -649,51 +701,30 @@ footer {
 
   </div>
 
-  <div class="messages-list" id="listaMensajes">
-
-    <p class="no-messages">
-      Tus mensajes aparecerán aquí.
-    </p>
-
-  </div>
+  <div class="messages-list" id="listaMensajes"></div>
 
 </section>
 
-<!-- REGALO -->
+<!-- 8. FINAL -->
 
-<section class="center" id="regalo">
+<section class="final-section">
 
-  <p class="eyebrow">Un detalle especial</p>
+  <div class="divider"></div>
 
-  <h2 class="section-title">Mi regalo</h2>
-
-  <p class="section-description">
-    Tu presencia es mi regalo más importante.
-    Si deseas regalarme algo más,
-    te comparto mi alias.
+  <p class="final-title">
+    Gracias por ser parte<br>
+    de mi historia ♡
   </p>
 
-  <div class="gift-card">
+  <p class="eyebrow">FIN</p>
 
-    <p class="eyebrow">ALIAS</p>
-
-    <div class="alias" id="alias">franud</div>
-
-    <button class="btn" onclick="copiarAlias()">
-      COPIAR ALIAS
-    </button>
-
-  </div>
+  <div class="divider"></div>
 
 </section>
-
-<footer>
-  Gracias por ser parte de mi historia ♡
-</footer>
 
 <script>
 
-/* GALERIAS AUTOMATICAS */
+/* GALERIAS DE FOTOS */
 
 const galerias = {};
 
@@ -770,26 +801,106 @@ function mover(id, direccion) {
   actualizar(id);
 }
 
-/* HISTORIA: H1 A H49 */
+/* HISTORIA: H1 A H130 */
 
 crearGaleria(
   'historiaGallery',
   'H',
-  49,
+  130,
   'historiaCounter'
 );
 
-/* ARTE: A1 A A26 */
+/* ARTE: A1 A A80 */
 
 crearGaleria(
   'arteGallery',
   'A',
-  26,
+  80,
   'arteCounter',
   'art-page'
 );
 
-/* MENSAJES PROVISIONALES EN ESTE NAVEGADOR */
+/* VIDEOS: GALERIA CON FLECHAS */
+
+const videos = [
+  'video.mp4',
+  'video1.mp4',
+  'video2.mp4',
+  'video3.mp4',
+  'video4.mp4'
+];
+
+let videoActual = 0;
+
+const videoTrack = document.getElementById('videoTrack');
+
+const videoCounter = document.getElementById('videoCounter');
+
+videos.forEach(function(nombre, indice) {
+
+  const slide = document.createElement('div');
+
+  slide.className = 'video-slide';
+
+  const video = document.createElement('video');
+
+  video.controls = true;
+  video.preload = 'none';
+  video.playsInline = true;
+
+  const source = document.createElement('source');
+
+  source.src = nombre;
+  source.type = 'video/mp4';
+
+  video.appendChild(source);
+
+  slide.appendChild(video);
+
+  videoTrack.appendChild(slide);
+
+});
+
+function actualizarVideo() {
+
+  videoTrack.style.transform =
+    'translateX(-' + (videoActual * 100) + '%)';
+
+  videoCounter.textContent =
+    (videoActual + 1) + ' / ' + videos.length;
+
+  /* PAUSAR LOS VIDEOS QUE NO SE ESTAN MOSTRANDO */
+
+  const todos = videoTrack.querySelectorAll('video');
+
+  todos.forEach(function(video, indice) {
+
+    if (indice !== videoActual) {
+      video.pause();
+    }
+
+  });
+
+}
+
+function moverVideo(direccion) {
+
+  videoActual += direccion;
+
+  if (videoActual < 0) {
+    videoActual = videos.length - 1;
+  }
+
+  if (videoActual >= videos.length) {
+    videoActual = 0;
+  }
+
+  actualizarVideo();
+}
+
+actualizarVideo();
+
+/* MENSAJES PROVISIONALES */
 
 function guardarMensaje() {
 
@@ -836,7 +947,7 @@ function mostrarMensajes() {
   if (mensajes.length === 0) {
 
     contenedor.innerHTML =
-      '<p class="no-messages">Todavía no hay mensajes. ¡Sé el primero en dejar uno!</p>';
+      '<p class="no-messages">Todavía no hay mensajes.</p>';
 
     return;
   }
