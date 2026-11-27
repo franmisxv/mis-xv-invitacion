@@ -4,290 +4,620 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>FRANCESCA | MIS XV</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --fondo:#faf6f2;
-  --rosa:#d9c0b7;
-  --texto:#63534c;
-  --detalle:#a58274;
-  --blanco:#fffdfb;
+  --fondo: #f8f2ed;
+  --rosa: #c58b98;
+  --texto: #65534f;
+  --blanco: #fffaf6;
 }
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{
-  margin:0;color:var(--texto);font-family:'Montserrat',sans-serif;font-weight:300;
-  background-color:var(--fondo);
-  background-image:linear-gradient(rgba(250,246,242,.38),rgba(250,246,242,.38)),url('./fondo.jpeg');
-  background-repeat:no-repeat,no-repeat;background-size:cover,cover;
-  background-position:center,center;background-attachment:fixed,fixed;
+
+* {
+  box-sizing: border-box;
 }
-h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400}
-p{font-size:14px;line-height:2}
-section{padding:90px 24px;max-width:1100px;margin:auto}
-.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase}
-.center{text-align:center}
-.reveal{opacity:0;transform:translateY(35px);transition:opacity 1s ease,transform 1s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.hero-photo,.hero-title,.hero-name,.hero-text{animation:aparecer 1.5s ease both}
-.hero-name{animation-delay:.3s}.hero-text{animation-delay:.5s}
-@keyframes aparecer{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.nav{
-  position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:999;
-  width:calc(100% - 24px);max-width:900px;padding:10px;
-  background:rgba(250,246,242,.92);backdrop-filter:blur(12px);
-  border:1px solid rgba(217,192,183,.7);border-radius:50px;
-  box-shadow:0 8px 30px rgba(70,50,40,.08)
+
+html {
+  scroll-behavior: smooth;
 }
-.nav-inner{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
-.nav a{text-decoration:none;color:var(--texto);font-size:9px;letter-spacing:1px;padding:9px 12px;border-radius:30px;transition:.3s}
-.nav a:hover{background:var(--rosa);color:white}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 40px}
-.hero-photo{width:100%;max-width:420px;height:520px;object-fit:cover;object-position:center;border-radius:230px 230px 5px 5px;box-shadow:0 15px 50px rgba(90,60,50,.08)}
-.hero-top{letter-spacing:5px;font-size:10px;text-transform:uppercase}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(70px,12vw,115px);letter-spacing:5px;line-height:.9;color:var(--detalle);margin:35px 0 5px}
-.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(25px,5vw,38px);font-weight:500;letter-spacing:7px;text-transform:uppercase;margin:20px 0;color:var(--texto)}
-.hero-text{max-width:350px;margin:10px auto}
-.btn{display:inline-block;text-decoration:none;background:var(--detalle);color:white;padding:15px 30px;border-radius:50px;border:none;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:2px;cursor:pointer;margin-top:20px;transition:.3s ease}
-.btn:hover{background:var(--texto);transform:translateY(-3px);box-shadow:0 8px 20px rgba(90,60,50,.12)}
-.btn:active{transform:scale(.96)}
-.btn:disabled{opacity:.6;cursor:wait;transform:none}
-.section-title{font-size:55px;margin:15px 0;color:var(--detalle)}
-.section-description{max-width:500px;margin:0 auto}
-.gallery-wrapper{max-width:1000px;margin:45px auto 0;overflow:hidden}
-.gallery-track{display:flex;transition:transform .55s ease}
-.gallery-page{flex:0 0 100%;min-width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:start}
-.gallery-page img{width:100%;height:320px;object-fit:cover;border-radius:4px;box-shadow:0 8px 25px rgba(70,50,40,.06);transition:transform .4s ease}
-.gallery-page img:hover{transform:scale(1.025)}
-.gallery-page img:nth-child(even){margin-top:30px}
-.art-page img{object-fit:contain;background:rgba(255,255,255,.55)}
-.gallery-controls{display:flex;justify-content:center;align-items:center;gap:24px;margin-top:35px}
-.arrow{width:46px;height:46px;border:1px solid var(--detalle);border-radius:50%;background:transparent;color:var(--detalle);font-size:26px;cursor:pointer;transition:.3s}
-.arrow:hover{background:var(--detalle);color:white;transform:scale(1.08)}
-.arrow:active{transform:scale(.94)}
-.counter{font-size:10px;letter-spacing:3px}
-.video-gallery{max-width:750px;margin:45px auto 0;overflow:hidden}
-.video-track{display:flex;transition:transform .55s ease}
-.video-slide{flex:0 0 100%;min-width:100%;padding:12px;background:rgba(255,255,255,.7);border:1px solid #e4d4cb;border-radius:8px}
-.video-slide video{display:block;width:100%;max-height:550px;border-radius:5px;background:#000}
-.playlist-card{max-width:750px;margin:45px auto 0;padding:25px;background:rgba(255,255,255,.75);border:1px solid #e4d4cb;border-radius:18px;box-shadow:0 15px 45px rgba(90,60,50,.06)}
-.playlist-heading{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--detalle);margin:5px 0 15px}
-.playlist-card iframe{display:block;width:100%;border:0;border-radius:12px}
-.event-card{max-width:570px;margin:45px auto 0;padding:60px 35px;background:rgba(255,255,255,.82);border:1px solid #e4d4cb;outline:1px solid #e4d4cb;outline-offset:8px}
-.event-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--detalle)}
-.event-day{font-family:'Cormorant Garamond',serif;font-size:115px;line-height:1;color:var(--detalle);margin:20px 0 5px}
-.event-month{font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:4px}
-.event-time{font-family:'Cormorant Garamond',serif;font-size:38px}
-.event-place{font-family:'Cormorant Garamond',serif;font-size:30px}
-.divider{width:60px;height:1px;background:var(--rosa);margin:30px auto}
-.gift-card{max-width:480px;margin:35px auto 0;padding:40px 25px;background:rgba(255,255,255,.85);border-radius:5px}
-.alias{font-family:'Cormorant Garamond',serif;font-size:40px;letter-spacing:3px;margin:15px 0}
-.message-card{max-width:650px;margin:40px auto;padding:40px 30px;background:rgba(255,255,255,.88);border:1px solid #e4d4cb;border-radius:8px}
-.message-input{width:100%;padding:14px;margin:10px 0;border:1px solid #e4d4cb;border-radius:5px;background:rgba(250,246,242,.7);color:var(--texto);font-family:'Montserrat',sans-serif;font-size:14px;outline:none}
-.message-input:focus{border-color:var(--detalle)}
-textarea.message-input{min-height:120px;resize:vertical}
-.messages-list{max-width:650px;margin:35px auto;text-align:left}
-.saved-message{background:rgba(255,255,255,.88);border-left:2px solid var(--rosa);padding:20px;margin:18px 0;border-radius:4px;overflow-wrap:anywhere}
-.saved-message h3{color:var(--detalle);font-size:24px;margin:0 0 8px}
-.saved-message p{margin:0}
-.no-messages{font-size:13px;opacity:.7}
-.surprise-card{max-width:500px;margin:35px auto}
-.surprise-message{display:none;margin-top:25px;padding:30px;background:rgba(255,255,255,.85);border:1px solid #e4d4cb;border-radius:15px;font-family:'Cormorant Garamond',serif;font-size:27px;color:var(--detalle);animation:aparecer 1s ease}
-.surprise-message.show{display:block}
-.final-section{padding:100px 20px;text-align:center}
-.final-title{font-family:'Cormorant Garamond',serif;font-size:clamp(35px,6vw,60px);color:var(--detalle);font-weight:400;line-height:1.3}
-@media(max-width:700px){
- section{padding:70px 20px}
- .nav{top:8px;padding:6px}
- .nav-inner{gap:2px}
- .nav a{font-size:8px;padding:7px 8px}
- .hero{padding-top:120px}
- .hero-photo{height:430px;max-width:340px}
- .hero-title{font-size:78px;letter-spacing:2px}
- .hero-name{letter-spacing:5px;font-size:30px}
- .section-title{font-size:45px}
- .gallery-page{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
- .gallery-page img{height:230px}
- .gallery-page img:nth-child(even){margin-top:20px}
- .event-card{padding:45px 20px}
- .event-day{font-size:90px}
- .event-month{font-size:23px}
- .event-time{font-size:32px}
- .alias{font-size:32px}
- .message-card{padding:30px 20px}
- .playlist-card{padding:15px}
- .playlist-heading{font-size:30px}
- body{background-attachment:scroll,scroll}
+
+body {
+  margin: 0;
+  color: var(--texto);
+  font-family: 'Montserrat', sans-serif;
+  background: var(--fondo) url('fondo.jpeg') center center / cover fixed;
 }
-@media(max-width:380px){
- .gallery-page img{height:190px}
- .hero-photo{height:370px}
- .nav a{padding:6px 5px}
+
+section {
+  padding: 75px 20px;
+  text-align: center;
+  scroll-margin-top: 100px;
 }
-@media(prefers-reduced-motion:reduce){
- *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 42px;
+  margin-bottom: 25px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(248,242,237,.95);
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid #eadbd4;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--texto);
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 8px;
+}
+
+.menu a:hover {
+  color: var(--rosa);
+}
+
+.portada {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 15px;
+}
+
+.portada img {
+  width: min(85%, 420px);
+  max-height: 65vh;
+  object-fit: cover;
+  border-radius: 220px 220px 0 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+.portada .texto-portada {
+  margin-top: 25px;
+}
+
+.portada h1 {
+  font-size: clamp(45px, 9vw, 85px);
+  letter-spacing: 7px;
+  margin: 0;
+}
+
+.portada h2 {
+  font-size: 35px;
+  letter-spacing: 5px;
+  margin: 5px 0;
+}
+
+.portada p {
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.separador {
+  width: 80px;
+  height: 1px;
+  background: var(--rosa);
+  margin: 25px auto;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.galeria img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  transition: transform .3s;
+}
+
+.galeria img:hover {
+  transform: scale(1.025);
+}
+
+.galeria img.error-foto {
+  display: none;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--rosa);
+  color: white;
+  border: none;
+  padding: 13px 24px;
+  margin: 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: #a87381;
+  transform: translateY(-2px);
+}
+
+.videos-contenedor {
+  max-width: 850px;
+  margin: auto;
+}
+
+video {
+  width: 100%;
+  max-height: 600px;
+  border-radius: 12px;
+  background: #000;
+}
+
+.video-nombre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  margin: 20px 0;
+}
+
+.spotify {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.spotify iframe {
+  width: 100%;
+  height: 380px;
+  border-radius: 12px;
+  border: none;
+}
+
+.detalles {
+  max-width: 700px;
+  margin: auto;
+  padding: 30px;
+  background: rgba(255,250,246,.75);
+  border-radius: 15px;
+}
+
+.detalles p {
+  margin: 20px 0;
+}
+
+.alias {
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.mensajes {
+  max-width: 750px;
+  margin: auto;
+}
+
+.mensajes input,
+.mensajes textarea {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid #e5d4ce;
+  background: rgba(255,255,255,.85);
+  border-radius: 8px;
+  font-family: inherit;
+  color: var(--texto);
+}
+
+.mensajes textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.mensaje-card {
+  background: rgba(255,250,246,.92);
+  border: 1px solid #eadbd4;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.mensaje-card strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  color: var(--rosa);
+}
+
+.mensaje-card p {
+  white-space: pre-wrap;
+}
+
+#estadoMensajes {
+  font-size: 13px;
+  margin: 15px;
+}
+
+#sorpresa {
+  display: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  max-width: 700px;
+  margin: 30px auto;
+  animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.final {
+  padding: 100px 20px;
+}
+
+.final h2 {
+  font-size: 50px;
+}
+
+footer {
+  padding: 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@media(max-width:600px) {
+  section {
+    padding: 55px 15px;
+  }
+
+  h2 {
+    font-size: 35px;
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .galeria img {
+    height: 220px;
+  }
+
+  .menu {
+    gap: 3px;
+  }
+
+  .menu a {
+    font-size: 9px;
+    padding: 7px 5px;
+  }
+
+  .spotify iframe {
+    height: 350px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<nav class="nav">
-<div class="nav-inner">
-<a href="#portada">INICIO</a>
-<a href="#historia">HISTORIA</a>
-<a href="#arte">ARTE</a>
-<a href="#videos">VIDEOS</a>
-<a href="#playlist">MÚSICA</a>
-<a href="#evento">FECHA</a>
-<a href="#regalo">REGALO</a>
-<a href="#mensajes">MENSAJES</a>
-</div>
+<!-- MENU -->
+<nav class="menu">
+  <a href="#inicio">INICIO</a>
+  <a href="#historia">MI HISTORIA</a>
+  <a href="#arte">MI ARTE</a>
+  <a href="#videos">VIDEOS</a>
+  <a href="#musica">MI MÚSICA</a>
+  <a href="#evento">EL EVENTO</a>
+  <a href="#regalo">REGALO</a>
+  <a href="#mensajes">MENSAJES</a>
 </nav>
 
 <!-- PORTADA -->
-<section class="hero" id="portada">
-<p class="hero-top">Una celebración · Un sueño</p>
-<img class="hero-photo" src="portada.jpeg" alt="Francesca">
-<h1 class="hero-title">MIS XV</h1>
-<div class="hero-name">FRANCESCA</div>
-<p class="hero-text">Quince años de sueños, momentos inolvidables y muchas historias por compartir. Te invito a celebrar conmigo.</p>
-<a href="#historia" class="btn">DESCUBRIR</a>
+<section class="portada" id="inicio">
+  <img src="portada.jpeg" alt="Francesca">
+
+  <div class="texto-portada">
+    <p>UNA NOCHE, UN SUEÑO, UNA HISTORIA</p>
+    <h1>MIS XV</h1>
+    <div class="separador"></div>
+    <h2>FRANCESCA</h2>
+    <p>TE INVITO A COMPARTIR UN MOMENTO INOLVIDABLE</p>
+  </div>
 </section>
 
 <!-- HISTORIA -->
-<section id="historia" class="center reveal">
-<p class="eyebrow">Un viaje en el tiempo</p>
-<h2 class="section-title">Mi historia</h2>
-<p class="section-description">Cada fotografía guarda un recuerdo, una sonrisa y un pedacito de mi vida. Gracias por acompañarme en este viaje.</p>
-<div class="gallery-wrapper" id="historiaGallery"><div class="gallery-track"></div></div>
-<div class="gallery-controls">
-<button class="arrow" onclick="mover('historiaGallery',-1)">‹</button>
-<span class="counter" id="historiaCounter"></span>
-<button class="arrow" onclick="mover('historiaGallery',1)">›</button>
-</div>
+<section id="historia">
+  <h2>Mi historia</h2>
+  <div class="separador"></div>
+  <p>Un recorrido por mis recuerdos, mis momentos y mi historia.</p>
+  <div class="galeria" id="historiaGallery"></div>
 </section>
 
 <!-- ARTE -->
-<section class="center reveal" id="arte">
-<p class="eyebrow">Mi pequeño universo</p>
-<h2 class="section-title">Mi arte</h2>
-<p class="section-description">Un espacio para mostrar aquello que imagino, creo y expreso a través de mis dibujos e instrumentos musicales.</p>
-<div class="gallery-wrapper" id="arteGallery"><div class="gallery-track"></div></div>
-<div class="gallery-controls">
-<button class="arrow" onclick="mover('arteGallery',-1)">‹</button>
-<span class="counter" id="arteCounter"></span>
-<button class="arrow" onclick="mover('arteGallery',1)">›</button>
-</div>
+<section id="arte">
+  <h2>Mi arte</h2>
+  <div class="separador"></div>
+  <p>Pequeños momentos, grandes recuerdos.</p>
+  <div class="galeria" id="arteGallery"></div>
 </section>
 
 <!-- VIDEOS -->
-<section class="center reveal" id="videos">
-<p class="eyebrow">Un recuerdo especial</p>
-<h2 class="section-title">Un poquito de mí</h2>
-<p class="section-description">Algunos momentos que quiero compartir con ustedes.</p>
-<div class="video-gallery"><div class="video-track" id="videoTrack"></div></div>
-<div class="gallery-controls">
-<button class="arrow" onclick="moverVideo(-1)">‹</button>
-<span class="counter" id="videoCounter"></span>
-<button class="arrow" onclick="moverVideo(1)">›</button>
-</div>
+<section id="videos">
+  <h2>Mis videos</h2>
+  <div class="separador"></div>
+
+  <div class="videos-contenedor">
+    <div class="video-nombre" id="nombreVideo">Video 1</div>
+
+    <video id="reproductorVideo" controls playsinline preload="metadata">
+      <source src="video.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+
+    <div>
+      <button class="btn" onclick="videoAnterior()">ANTERIOR</button>
+      <button class="btn" onclick="videoSiguiente()">SIGUIENTE</button>
+    </div>
+  </div>
 </section>
 
-<!-- PLAYLIST -->
-<section class="center reveal" id="playlist">
-<p class="eyebrow">Canciones que me acompañan</p>
-<h2 class="section-title">Mi música</h2>
-<p class="section-description">Un poquito de las canciones que me gustan, que me acompañan y que forman parte de mí.</p>
-<div class="playlist-card">
-<h3 class="playlist-heading">♡ Mi playlist ♡</h3>
-<iframe src="https://open.spotify.com/embed/playlist/2hzWDBpejdgmqqUbDigwRk?utm_source=generator&theme=0" height="352" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
+<!-- SPOTIFY -->
+<section id="musica">
+  <h2>Mi música</h2>
+  <div class="separador"></div>
+  <p>Una playlist con canciones que me acompañan.</p>
+
+  <div class="spotify">
+    <iframe
+      src="https://open.spotify.com/embed/playlist/2hzWDBpejdgmqqUbDigwRk?utm_source=generator"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
 </section>
 
-<!-- FECHA -->
-<section class="center reveal" id="evento">
-<p class="eyebrow">Una fecha para recordar</p>
-<h2 class="section-title">MIS XV</h2>
-<div class="event-card">
-<p class="event-label">Te invito a celebrar conmigo</p>
-<div class="divider"></div>
-<p class="event-label">SÁBADO</p>
-<div class="event-day">28</div>
-<div class="event-month">NOVIEMBRE · 2026</div>
-<div class="divider"></div>
-<p class="event-label">HORARIO</p>
-<div class="event-time">18:00 HS</div>
-<div class="divider"></div>
-<p class="event-label">LUGAR</p>
-<div class="event-place">Zorzal 3725</div>
-<p>Campo Salles · Buenos Aires</p>
-<a class="btn" href="https://www.google.com/maps/place/Zorzal+3725,+Campo+Salles,+Provincia+de+Buenos+Aires/@-33.4136275,-60.2461301,17z/data=!3m1!4b1!4m6!3m5!1s0x95b760c28ddd7fe3:0x7697bcdcaf1d62e2!8m2!3d-33.413632!4d-60.2435552!16s%2Fg%2F11jyjl12b9?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">CÓMO LLEGAR</a>
-<br>
-<a class="btn" href="https://wa.me/?text=Hola%20Francesca%2C%20confirmo%20mi%20asistencia%20a%20tus%20XV." target="_blank" rel="noopener noreferrer">CONFIRMAR ASISTENCIA</a>
-</div>
+<!-- EVENTO -->
+<section id="evento">
+  <h2>Mi gran noche</h2>
+  <div class="separador"></div>
+
+  <div class="detalles">
+    <h3>FRANCESCA</h3>
+
+    <p><strong>SÁBADO 28 DE NOVIEMBRE DE 2026</strong></p>
+
+    <p>18:00 HS</p>
+
+    <p>Zorzal 3725, Campo Salles, Buenos Aires</p>
+
+    <a class="btn"
+       href="https://www.google.com/maps/search/?api=1&query=Zorzal+3725+Campo+Salles+Buenos+Aires"
+       target="_blank"
+       rel="noopener">
+       CÓMO LLEGAR
+    </a>
+  </div>
 </section>
 
 <!-- REGALO -->
-<section class="center reveal" id="regalo">
-<p class="eyebrow">Un detalle especial</p>
-<h2 class="section-title">Mi regalo</h2>
-<p class="section-description">Tu presencia es mi regalo más importante. Si deseas regalarme algo más, te comparto mi alias.</p>
-<div class="gift-card">
-<p class="eyebrow">ALIAS</p>
-<div class="alias" id="alias">franud</div>
-<button class="btn" onclick="copiarAlias()">COPIAR ALIAS</button>
-</div>
+<section id="regalo">
+  <h2>Un regalo</h2>
+  <div class="separador"></div>
+
+  <p>Si querés regalarme algo, podés hacerlo a través de mi alias.</p>
+
+  <div class="detalles">
+    <p>ALIAS</p>
+    <div class="alias" id="aliasTexto">franud</div>
+
+    <button class="btn" onclick="copiarAlias()">COPIAR ALIAS</button>
+
+    <p id="estadoAlias"></p>
+  </div>
 </section>
 
 <!-- MENSAJES -->
-<section class="center reveal" id="mensajes">
-<p class="eyebrow">Palabras que quedan en el corazón</p>
-<h2 class="section-title">Dejame un mensaje</h2>
-<p class="section-description">Me encantaría guardar unas palabras tuyas para recordar este momento tan especial.</p>
-<div class="message-card">
-<input type="text" id="nombreMensaje" class="message-input" placeholder="Tu nombre" maxlength="60" autocomplete="name">
-<textarea id="textoMensaje" class="message-input" placeholder="Escribí tu mensaje para Francesca..." maxlength="500"></textarea>
-<button class="btn" id="botonMensaje" onclick="guardarMensaje()">GUARDAR MENSAJE</button>
-<p id="estadoMensaje" class="no-messages" aria-live="polite"></p>
-</div>
-<div class="messages-list" id="listaMensajes"></div>
+<section id="mensajes">
+  <h2>Dejá tu mensaje</h2>
+  <div class="separador"></div>
+
+  <p>Quiero guardar un recuerdo de cada persona que me acompaña.</p>
+
+  <div class="mensajes">
+
+    <input
+      type="text"
+      id="nombreMensaje"
+      maxlength="60"
+      placeholder="Tu nombre">
+
+    <textarea
+      id="textoMensaje"
+      maxlength="500"
+      placeholder="Escribí tu mensaje para Francesca..."></textarea>
+
+    <button class="btn" id="btnGuardarMensaje">
+      GUARDAR MENSAJE
+    </button>
+
+    <div id="estadoMensajes">Conectando con el libro de mensajes...</div>
+
+    <div id="listaMensajes"></div>
+
+  </div>
 </section>
 
 <!-- SORPRESA -->
-<section class="center reveal" id="sorpresa">
-<p class="eyebrow">Un pequeño detalle</p>
-<h2 class="section-title">Una sorpresa</h2>
-<div class="surprise-card">
-<button class="btn" onclick="mostrarSorpresa()">ABRIR MI SORPRESA ♡</button>
-<div class="surprise-message" id="sorpresaMensaje">¡Qué lindo que estés acá! Gracias por compartir conmigo este momento tan especial. ♡</div>
-</div>
+<section id="sorpresaSection">
+  <h2>Una sorpresa</h2>
+  <div class="separador"></div>
+
+  <button class="btn" onclick="mostrarSorpresa()">
+    ABRIR MI SORPRESA
+  </button>
+
+  <div id="sorpresa">
+    ¡Gracias por acompañarme en una de las noches más importantes de mi vida!
+
+    <br><br>
+
+    Los quiero mucho. 💗
+  </div>
 </section>
 
 <!-- FINAL -->
-<section class="final-section reveal">
-<div class="divider"></div>
-<p class="final-title">Gracias por ser parte<br>de mi historia ♡</p>
-<p class="eyebrow">FIN</p>
-<div class="divider"></div>
+<section class="final">
+  <h2>Gracias por ser parte de mi historia.</h2>
+  <div class="separador"></div>
+  <p>Con amor, Francesca.</p>
+  <h2>FIN</h2>
 </section>
 
+<footer>
+  FRANCESCA · MIS XV · 2026
+</footer>
+
+<!-- FUNCIONES GENERALES -->
+<script>
+/* GALERÍAS */
+
+function crearGaleria(id, prefijo, cantidad) {
+  const galeria = document.getElementById(id);
+
+  for (let i = 1; i <= cantidad; i++) {
+    const img = document.createElement('img');
+
+    img.src = prefijo + i + '.jpeg';
+    img.alt = 'Foto ' + i;
+    img.loading = 'lazy';
+
+    img.onerror = function() {
+      this.classList.add('error-foto');
+    };
+
+    galeria.appendChild(img);
+  }
+}
+
+crearGaleria('historiaGallery', 'h', 130);
+crearGaleria('arteGallery', 'a', 80);
+
+
+/* VIDEOS */
+
+const videos = [
+  'video.mp4',
+  'video1.mp4',
+  'video2.mp4',
+  'video3.mp4',
+  'video4.mp4'
+];
+
+let videoActual = 0;
+
+function cargarVideo(indice) {
+  videoActual = indice;
+
+  const reproductor = document.getElementById('reproductorVideo');
+
+  reproductor.pause();
+  reproductor.src = videos[videoActual];
+  reproductor.load();
+
+  document.getElementById('nombreVideo').textContent =
+    'Video ' + (videoActual + 1);
+}
+
+function videoSiguiente() {
+  cargarVideo((videoActual + 1) % videos.length);
+}
+
+function videoAnterior() {
+  cargarVideo((videoActual - 1 + videos.length) % videos.length);
+}
+
+
+/* COPIAR ALIAS */
+
+async function copiarAlias() {
+  const alias = 'franud';
+  const estado = document.getElementById('estadoAlias');
+
+  try {
+    await navigator.clipboard.writeText(alias);
+    estado.textContent = '¡Alias copiado!';
+  } catch (error) {
+    estado.textContent = 'Alias: ' + alias;
+  }
+}
+
+
+/* SORPRESA */
+
+function mostrarSorpresa() {
+  const sorpresa = document.getElementById('sorpresa');
+
+  sorpresa.style.display = 'block';
+
+  sorpresa.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+}
+</script>
+
+<!-- FIREBASE: MENSAJES EN LINEA -->
 <script type="module">
 
-/* FIREBASE */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  getFirestore, collection, addDoc, query, orderBy, limit,
-  onSnapshot, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+/* CONFIGURACION DE FIREBASE */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCQnVtRDNlM5tQv3Hr4uxaozea6Z1LO530",
+  apiKey: "AIzaSyCQnVtRDNl5M5tQv3Hr4uxaozea6Z1LO530",
   authDomain: "francesca-mis-xv-mensajes.firebaseapp.com",
   projectId: "francesca-mis-xv-mensajes",
   storageBucket: "francesca-mis-xv-mensajes.firebasestorage.app",
@@ -295,202 +625,108 @@ const firebaseConfig = {
   appId: "1:297684424296:web:41c5a21688a8fa50fccddd"
 };
 
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
 const mensajesRef = collection(db, 'mensajes');
 
+const estado = document.getElementById('estadoMensajes');
+const lista = document.getElementById('listaMensajes');
+const boton = document.getElementById('btnGuardarMensaje');
 
-/* GALERIAS */
-const galerias = {};
 
-function crearGaleria(id,prefijo,cantidad,contadorId,claseExtra=''){
-  const contenedor=document.getElementById(id);
-  const track=contenedor.querySelector('.gallery-track');
-  const totalPaginas=Math.ceil(cantidad/4);
+/* GUARDAR MENSAJES */
 
-  galerias[id]={pagina:0,total:totalPaginas,contador:document.getElementById(contadorId)};
+boton.addEventListener('click', async function() {
 
-  for(let pagina=0;pagina<totalPaginas;pagina++){
-    const slide=document.createElement('div');
-    slide.className='gallery-page '+claseExtra;
-    const inicio=pagina*4+1;
-    const fin=Math.min(inicio+3,cantidad);
+  const nombre = document.getElementById('nombreMensaje').value.trim();
+  const mensaje = document.getElementById('textoMensaje').value.trim();
 
-    for(let numero=inicio;numero<=fin;numero++){
-      const img=document.createElement('img');
-      img.src=prefijo+numero+'.jpeg';
-      img.alt=prefijo+numero;
-      img.loading='lazy';
-      slide.appendChild(img);
-    }
-    track.appendChild(slide);
+  if (!nombre || !mensaje) {
+    estado.textContent = 'Completá tu nombre y tu mensaje.';
+    return;
   }
-  actualizar(id);
-}
 
-function actualizar(id){
-  const track=document.getElementById(id).querySelector('.gallery-track');
-  const datos=galerias[id];
-  track.style.transform='translateX(-'+(datos.pagina*100)+'%)';
-  datos.contador.textContent=(datos.pagina+1)+' / '+datos.total;
-}
+  if (nombre.length > 60 || mensaje.length > 500) {
+    estado.textContent = 'El nombre o mensaje es demasiado largo.';
+    return;
+  }
 
-function mover(id,direccion){
-  const datos=galerias[id];
-  datos.pagina+=direccion;
-  if(datos.pagina<0)datos.pagina=datos.total-1;
-  if(datos.pagina>=datos.total)datos.pagina=0;
-  actualizar(id);
-}
-window.mover=mover;
+  boton.disabled = true;
+  estado.textContent = 'Guardando mensaje...';
 
-/* HISTORIA */
-crearGaleria('historiaGallery','h',130,'historiaCounter');
+  try {
 
-/* ARTE */
-crearGaleria('arteGallery','a',80,'arteCounter','art-page');
+    await addDoc(mensajesRef, {
+      nombre: nombre,
+      mensaje: mensaje,
+      fecha: serverTimestamp()
+    });
 
-/* VIDEOS */
-const videos=['video.mp4','video1.mp4','video2.mp4','video3.mp4','video4.mp4'];
-let videoActual=0;
-const videoTrack=document.getElementById('videoTrack');
-const videoCounter=document.getElementById('videoCounter');
+    document.getElementById('nombreMensaje').value = '';
+    document.getElementById('textoMensaje').value = '';
 
-videos.forEach(nombre=>{
-  const slide=document.createElement('div');
-  slide.className='video-slide';
-  const video=document.createElement('video');
-  video.controls=true;
-  video.preload='none';
-  video.playsInline=true;
-  const source=document.createElement('source');
-  source.src=nombre;
-  source.type='video/mp4';
-  video.appendChild(source);
-  slide.appendChild(video);
-  videoTrack.appendChild(slide);
+    estado.textContent = '¡Tu mensaje quedó guardado! 💗';
+
+  } catch (error) {
+
+    console.error(error);
+    estado.textContent = 'No se pudo guardar. Revisá la conexión o las reglas de Firebase.';
+
+  } finally {
+
+    boton.disabled = false;
+
+  }
 });
 
-function actualizarVideo(){
-  videoTrack.style.transform='translateX(-'+(videoActual*100)+'%)';
-  videoCounter.textContent=(videoActual+1)+' / '+videos.length;
-  videoTrack.querySelectorAll('video').forEach((v,i)=>{if(i!==videoActual)v.pause();});
-}
-function moverVideo(direccion){
-  videoActual+=direccion;
-  if(videoActual<0)videoActual=videos.length-1;
-  if(videoActual>=videos.length)videoActual=0;
-  actualizarVideo();
-}
-window.moverVideo=moverVideo;
-actualizarVideo();
 
-/* FIRESTORE: GUARDAR */
-window.guardarMensaje=async function(){
-  const nombre=document.getElementById('nombreMensaje').value.trim();
-  const mensaje=document.getElementById('textoMensaje').value.trim();
-  const boton=document.getElementById('botonMensaje');
-  const estado=document.getElementById('estadoMensaje');
+/* MOSTRAR MENSAJES DE TODOS */
 
-  if(!nombre||!mensaje){
-    alert('Por favor, completá tu nombre y tu mensaje.');
-    return;
-  }
-  if(nombre.length>60||mensaje.length>500){
-    alert('El nombre o mensaje supera el límite permitido.');
+const consulta = query(mensajesRef, orderBy('fecha', 'desc'));
+
+onSnapshot(consulta, function(snapshot) {
+
+  lista.innerHTML = '';
+
+  if (snapshot.empty) {
+    estado.textContent = 'Todavía no hay mensajes. ¡Sé el primero!';
     return;
   }
 
-  boton.disabled=true;
-  boton.textContent='GUARDANDO...';
-  estado.textContent='';
+  estado.textContent = 'Mensajes de quienes me acompañan 💗';
 
-  try{
-    await addDoc(mensajesRef,{
-      nombre:nombre,
-      mensaje:mensaje,
-      fecha:serverTimestamp()
-    });
-    document.getElementById('nombreMensaje').value='';
-    document.getElementById('textoMensaje').value='';
-    estado.textContent='¡Tu mensaje quedó guardado! ♡';
-  }catch(error){
-    console.error(error);
-    estado.textContent='No se pudo guardar. Revisá tu conexión e intentá nuevamente.';
-  }finally{
-    boton.disabled=false;
-    boton.textContent='GUARDAR MENSAJE';
-  }
-};
+  snapshot.forEach(function(documento) {
 
-/* FIRESTORE: MOSTRAR EN TIEMPO REAL */
-const contenedorMensajes=document.getElementById('listaMensajes');
-const consulta=query(mensajesRef,orderBy('fecha','desc'),limit(100));
+    const datos = documento.data();
 
-onSnapshot(consulta,(snapshot)=>{
-  contenedorMensajes.innerHTML='';
-  if(snapshot.empty){
-    contenedorMensajes.innerHTML='<p class="no-messages">Todavía no hay mensajes. ¡Podés ser el primero! ♡</p>';
-    return;
-  }
-  snapshot.forEach(documento=>{
-    const item=documento.data();
-    const tarjeta=document.createElement('div');
-    tarjeta.className='saved-message';
-    const nombre=document.createElement('h3');
-    nombre.textContent=item.nombre||'Invitado';
-    const texto=document.createElement('p');
-    texto.textContent=item.mensaje||'';
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'mensaje-card';
+
+    const nombre = document.createElement('strong');
+    nombre.textContent = datos.nombre || 'Invitado';
+
+    const texto = document.createElement('p');
+    texto.textContent = datos.mensaje || '';
+
     tarjeta.appendChild(nombre);
     tarjeta.appendChild(texto);
-    contenedorMensajes.appendChild(tarjeta);
+
+    lista.appendChild(tarjeta);
+
   });
-},(error)=>{
+
+}, function(error) {
+
   console.error(error);
-  contenedorMensajes.innerHTML='<p class="no-messages">No se pudieron cargar los mensajes.</p>';
+
+  estado.textContent =
+    'No se pudieron cargar los mensajes. Revisá las reglas de Firestore.';
+
 });
 
-/* COPIAR ALIAS */
-window.copiarAlias=function(){
-  const alias=document.getElementById('alias').innerText;
-  if(navigator.clipboard&&window.isSecureContext){
-    navigator.clipboard.writeText(alias).then(()=>alert('¡Alias copiado!')).catch(()=>copiarAlternativo(alias));
-  }else copiarAlternativo(alias);
-};
-
-function copiarAlternativo(texto){
-  const area=document.createElement('textarea');
-  area.value=texto;
-  area.style.position='fixed';
-  area.style.opacity='0';
-  document.body.appendChild(area);
-  area.select();
-  try{
-    document.execCommand('copy');
-    alert('¡Alias copiado!');
-  }catch(e){
-    alert('Copiá manualmente el alias: '+texto);
-  }
-  area.remove();
-}
-
-/* SORPRESA */
-window.mostrarSorpresa=function(){
-  document.getElementById('sorpresaMensaje').classList.toggle('show');
-};
-
-/* ANIMACIONES */
-const observador=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observador.unobserve(entry.target);
-    }
-  });
-},{threshold:0.15});
-
-document.querySelectorAll('.reveal').forEach(elemento=>observador.observe(elemento));
-
 </script>
+
 </body>
 </html>
