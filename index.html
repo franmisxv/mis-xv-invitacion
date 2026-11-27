@@ -191,7 +191,7 @@ p {
   background: rgba(255,255,255,.55);
 }
 
-/* CONTROLES DE FOTOS Y VIDEOS */
+/* CONTROLES */
 
 .gallery-controls {
   display: flex;
@@ -221,6 +221,62 @@ p {
 .counter {
   font-size: 10px;
   letter-spacing: 3px;
+}
+
+/* VIDEOS */
+
+.video-gallery {
+  max-width: 750px;
+  margin: 45px auto 0;
+  overflow: hidden;
+}
+
+.video-track {
+  display: flex;
+  transition: transform .55s ease;
+}
+
+.video-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 12px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid #e4d4cb;
+  border-radius: 8px;
+}
+
+.video-slide video {
+  display: block;
+  width: 100%;
+  max-height: 550px;
+  border-radius: 5px;
+  background: #000;
+}
+
+/* PLAYLIST SPOTIFY */
+
+.playlist-card {
+  max-width: 750px;
+  margin: 45px auto 0;
+  padding: 25px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid #e4d4cb;
+  border-radius: 18px;
+  box-shadow: 0 15px 45px rgba(90,60,50,.06);
+}
+
+.playlist-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  color: var(--detalle);
+  margin: 5px 0 15px;
+}
+
+.playlist-card iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
 }
 
 /* FECHA */
@@ -273,36 +329,6 @@ p {
   height: 1px;
   background: var(--rosa);
   margin: 30px auto;
-}
-
-/* GALERIA DE VIDEOS */
-
-.video-gallery {
-  max-width: 750px;
-  margin: 45px auto 0;
-  overflow: hidden;
-}
-
-.video-track {
-  display: flex;
-  transition: transform .55s ease;
-}
-
-.video-slide {
-  flex: 0 0 100%;
-  min-width: 100%;
-  padding: 12px;
-  background: rgba(255,255,255,.7);
-  border: 1px solid #e4d4cb;
-  border-radius: 8px;
-}
-
-.video-slide video {
-  display: block;
-  width: 100%;
-  max-height: 550px;
-  border-radius: 5px;
-  background: #000;
 }
 
 /* REGALO */
@@ -464,6 +490,14 @@ textarea.message-input {
     padding: 30px 20px;
   }
 
+  .playlist-card {
+    padding: 15px;
+  }
+
+  .playlist-heading {
+    font-size: 30px;
+  }
+
   body {
     background-attachment: scroll, scroll;
   }
@@ -594,7 +628,35 @@ textarea.message-input {
 
 </section>
 
-<!-- 5. FECHA -->
+<!-- 5. PLAYLIST SPOTIFY -->
+
+<section class="center" id="playlist">
+
+  <p class="eyebrow">Canciones que me acompañan</p>
+
+  <h2 class="section-title">Mi música</h2>
+
+  <p class="section-description">
+    Un poquito de las canciones que me gustan,
+    que me acompañan y que forman parte de mí.
+  </p>
+
+  <div class="playlist-card">
+
+    <h3 class="playlist-heading">♡ Mi playlist ♡</h3>
+
+    <iframe
+      src="https://open.spotify.com/embed/playlist/2hzWDBpejdgmqqUbDigwRk?utm_source=generator&theme=0"
+      height="352"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+
+  </div>
+
+</section>
+
+<!-- 6. FECHA -->
 
 <section class="center" id="evento">
 
@@ -639,7 +701,7 @@ textarea.message-input {
 
 </section>
 
-<!-- 6. MI REGALO -->
+<!-- 7. MI REGALO -->
 
 <section class="center" id="regalo">
 
@@ -667,7 +729,7 @@ textarea.message-input {
 
 </section>
 
-<!-- 7. PALABRAS Y MENSAJES -->
+<!-- 8. PALABRAS Y MENSAJES -->
 
 <section class="center" id="mensajes">
 
@@ -705,7 +767,7 @@ textarea.message-input {
 
 </section>
 
-<!-- 8. FINAL -->
+<!-- 9. FINAL -->
 
 <section class="final-section">
 
@@ -820,7 +882,7 @@ crearGaleria(
   'art-page'
 );
 
-/* VIDEOS: GALERIA CON FLECHAS */
+/* VIDEOS */
 
 const videos = [
   'video.mp4',
@@ -836,7 +898,7 @@ const videoTrack = document.getElementById('videoTrack');
 
 const videoCounter = document.getElementById('videoCounter');
 
-videos.forEach(function(nombre, indice) {
+videos.forEach(function(nombre) {
 
   const slide = document.createElement('div');
 
@@ -868,8 +930,6 @@ function actualizarVideo() {
 
   videoCounter.textContent =
     (videoActual + 1) + ' / ' + videos.length;
-
-  /* PAUSAR LOS VIDEOS QUE NO SE ESTAN MOSTRANDO */
 
   const todos = videoTrack.querySelectorAll('video');
 
