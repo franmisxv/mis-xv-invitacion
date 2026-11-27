@@ -15,6 +15,7 @@
   --rosa: #d9c0b7;
   --texto: #63534c;
   --detalle: #a58274;
+  --blanco: #fffdfb;
 }
 
 * {
@@ -38,12 +39,6 @@ body {
   background-attachment: fixed, fixed;
 }
 
-section {
-  padding: 90px 24px;
-  max-width: 1100px;
-  margin: auto;
-}
-
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
@@ -52,6 +47,12 @@ h1, h2, h3 {
 p {
   font-size: 14px;
   line-height: 2;
+}
+
+section {
+  padding: 90px 24px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .eyebrow {
@@ -64,6 +65,96 @@ p {
   text-align: center;
 }
 
+/* ANIMACIONES */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-photo,
+.hero-title,
+.hero-name,
+.hero-text {
+  animation: aparecer 1.5s ease both;
+}
+
+.hero-name {
+  animation-delay: .3s;
+}
+
+.hero-text {
+  animation-delay: .5s;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* NAVEGACION */
+
+.nav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: calc(100% - 24px);
+  max-width: 900px;
+  padding: 10px;
+  background: rgba(250,246,242,.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(217,192,183,.7);
+  border-radius: 50px;
+  box-shadow: 0 8px 30px rgba(70,50,40,.08);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--texto);
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 9px 12px;
+  border-radius: 30px;
+  transition: .3s;
+}
+
+.nav a:hover {
+  background: var(--rosa);
+  color: white;
+}
+
 /* PORTADA */
 
 .hero {
@@ -73,7 +164,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 100px 20px 40px;
 }
 
 .hero-photo {
@@ -136,7 +227,12 @@ p {
 
 .btn:hover {
   background: var(--texto);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(90,60,50,.12);
+}
+
+.btn:active {
+  transform: scale(.96);
 }
 
 /* TITULOS */
@@ -152,7 +248,7 @@ p {
   margin: 0 auto;
 }
 
-/* GALERIAS DE FOTOS */
+/* GALERIAS */
 
 .gallery-wrapper {
   max-width: 1000px;
@@ -180,6 +276,11 @@ p {
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 8px 25px rgba(70,50,40,.06);
+  transition: transform .4s ease;
+}
+
+.gallery-page img:hover {
+  transform: scale(1.025);
 }
 
 .gallery-page img:nth-child(even) {
@@ -216,6 +317,11 @@ p {
 .arrow:hover {
   background: var(--detalle);
   color: white;
+  transform: scale(1.08);
+}
+
+.arrow:active {
+  transform: scale(.94);
 }
 
 .counter {
@@ -253,7 +359,7 @@ p {
   background: #000;
 }
 
-/* PLAYLIST SPOTIFY */
+/* PLAYLIST */
 
 .playlist-card {
   max-width: 750px;
@@ -320,15 +426,6 @@ p {
 .event-place {
   font-family: 'Cormorant Garamond', serif;
   font-size: 30px;
-}
-
-/* DIVISION */
-
-.divider {
-  width: 55px;
-  height: 1px;
-  background: var(--rosa);
-  margin: 30px auto;
 }
 
 /* REGALO */
@@ -411,6 +508,30 @@ textarea.message-input {
   opacity: .7;
 }
 
+/* SORPRESA */
+
+.surprise-card {
+  max-width: 500px;
+  margin: 35px auto 0;
+}
+
+.surprise-message {
+  display: none;
+  margin-top: 25px;
+  padding: 30px;
+  background: rgba(255,255,255,.85);
+  border: 1px solid #e4d4cb;
+  border-radius: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  color: var(--detalle);
+  animation: aparecer 1s ease;
+}
+
+.surprise-message.show {
+  display: block;
+}
+
 /* FINAL */
 
 .final-section {
@@ -426,12 +547,30 @@ textarea.message-input {
   line-height: 1.3;
 }
 
-/* CELULARES */
+/* MOVIL */
 
 @media(max-width:700px) {
 
   section {
     padding: 70px 20px;
+  }
+
+  .nav {
+    top: 8px;
+    padding: 6px;
+  }
+
+  .nav-inner {
+    gap: 2px;
+  }
+
+  .nav a {
+    font-size: 8px;
+    padding: 7px 8px;
+  }
+
+  .hero {
+    padding-top: 120px;
   }
 
   .hero-photo {
@@ -511,15 +650,44 @@ textarea.message-input {
   .hero-photo {
     height: 370px;
   }
+
+  .nav a {
+    padding: 6px 5px;
+  }
+}
+
+/* RESPETAR PREFERENCIA DE MOVIMIENTO */
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVEGACION RAPIDA -->
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#portada">INICIO</a>
+    <a href="#historia">HISTORIA</a>
+    <a href="#arte">ARTE</a>
+    <a href="#videos">VIDEOS</a>
+    <a href="#playlist">MÚSICA</a>
+    <a href="#evento">FECHA</a>
+    <a href="#regalo">REGALO</a>
+    <a href="#mensajes">MENSAJES</a>
+  </div>
+</nav>
+
 <!-- 1. PORTADA -->
 
-<section class="hero">
+<section class="hero" id="portada">
 
   <p class="hero-top">Una celebración · Un sueño</p>
 
@@ -541,7 +709,7 @@ textarea.message-input {
 
 <!-- 2. MI HISTORIA -->
 
-<section id="historia" class="center">
+<section id="historia" class="center reveal">
 
   <p class="eyebrow">Un viaje en el tiempo</p>
 
@@ -571,7 +739,7 @@ textarea.message-input {
 
 <!-- 3. MI ARTE -->
 
-<section class="center" id="arte">
+<section class="center reveal" id="arte">
 
   <p class="eyebrow">Mi pequeño universo</p>
 
@@ -600,7 +768,7 @@ textarea.message-input {
 
 <!-- 4. VIDEOS -->
 
-<section class="center" id="videos">
+<section class="center reveal" id="videos">
 
   <p class="eyebrow">Un recuerdo especial</p>
 
@@ -628,9 +796,9 @@ textarea.message-input {
 
 </section>
 
-<!-- 5. PLAYLIST SPOTIFY -->
+<!-- 5. PLAYLIST -->
 
-<section class="center" id="playlist">
+<section class="center reveal" id="playlist">
 
   <p class="eyebrow">Canciones que me acompañan</p>
 
@@ -658,7 +826,7 @@ textarea.message-input {
 
 <!-- 6. FECHA -->
 
-<section class="center" id="evento">
+<section class="center reveal" id="evento">
 
   <p class="eyebrow">Una fecha para recordar</p>
 
@@ -697,13 +865,22 @@ textarea.message-input {
       CÓMO LLEGAR
     </a>
 
+    <br>
+
+    <a class="btn"
+       href="https://wa.me/?text=Hola%20Francesca%2C%20confirmo%20mi%20asistencia%20a%20tus%20XV."
+       target="_blank"
+       rel="noopener noreferrer">
+      CONFIRMAR ASISTENCIA
+    </a>
+
   </div>
 
 </section>
 
-<!-- 7. MI REGALO -->
+<!-- 7. REGALO -->
 
-<section class="center" id="regalo">
+<section class="center reveal" id="regalo">
 
   <p class="eyebrow">Un detalle especial</p>
 
@@ -729,9 +906,9 @@ textarea.message-input {
 
 </section>
 
-<!-- 8. PALABRAS Y MENSAJES -->
+<!-- 8. MENSAJES -->
 
-<section class="center" id="mensajes">
+<section class="center reveal" id="mensajes">
 
   <p class="eyebrow">Palabras que quedan en el corazón</p>
 
@@ -767,9 +944,34 @@ textarea.message-input {
 
 </section>
 
-<!-- 9. FINAL -->
+<!-- 9. BOTON SORPRESA -->
 
-<section class="final-section">
+<section class="center reveal" id="sorpresa">
+
+  <p class="eyebrow">Un pequeño detalle</p>
+
+  <h2 class="section-title">Una sorpresa</h2>
+
+  <div class="surprise-card">
+
+    <button class="btn" onclick="mostrarSorpresa()">
+      ABRIR MI SORPRESA ♡
+    </button>
+
+    <div class="surprise-message" id="sorpresaMensaje">
+      ¡Qué lindo que estés acá!
+      Gracias por compartir conmigo
+      este momento tan especial.
+      ♡
+    </div>
+
+  </div>
+
+</section>
+
+<!-- 10. FINAL -->
+
+<section class="final-section reveal">
 
   <div class="divider"></div>
 
@@ -786,7 +988,7 @@ textarea.message-input {
 
 <script>
 
-/* GALERIAS DE FOTOS */
+/* GALERIAS */
 
 const galerias = {};
 
@@ -863,7 +1065,7 @@ function mover(id, direccion) {
   actualizar(id);
 }
 
-/* HISTORIA: H1 A H130 */
+/* HISTORIA */
 
 crearGaleria(
   'historiaGallery',
@@ -872,7 +1074,7 @@ crearGaleria(
   'historiaCounter'
 );
 
-/* ARTE: A1 A A80 */
+/* ARTE */
 
 crearGaleria(
   'arteGallery',
@@ -960,7 +1162,7 @@ function moverVideo(direccion) {
 
 actualizarVideo();
 
-/* MENSAJES PROVISIONALES */
+/* MENSAJES LOCALES */
 
 function guardarMensaje() {
 
@@ -1072,6 +1274,42 @@ function copiarAlternativo(texto) {
 
   area.remove();
 }
+
+/* BOTON SORPRESA */
+
+function mostrarSorpresa() {
+
+  const mensaje = document.getElementById('sorpresaMensaje');
+
+  mensaje.classList.toggle('show');
+
+}
+
+/* ANIMACION AL DESPLAZARSE */
+
+const observador = new IntersectionObserver(function(entries) {
+
+  entries.forEach(function(entry) {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('visible');
+
+      observador.unobserve(entry.target);
+
+    }
+
+  });
+
+}, {
+  threshold: 0.15
+});
+
+document.querySelectorAll('.reveal').forEach(function(elemento) {
+
+  observador.observe(elemento);
+
+});
 
 </script>
 
