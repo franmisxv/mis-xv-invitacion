@@ -1,522 +1,221 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>FRANCESCA | MIS XV</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --fondo: #faf6f2;
-  --rosa: #d9c0b7;
-  --texto: #63534c;
-  --detalle: #a58274;
-}
-
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  color: var(--texto);
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-
-  background-color: var(--fondo);
-  background-image:
-    linear-gradient(rgba(250,246,242,.38), rgba(250,246,242,.38)),
-    url('./fondo.jpeg');
-  background-repeat: no-repeat, no-repeat;
-  background-size: cover, cover;
-  background-position: center, center;
-  background-attachment: fixed, fixed;
+  color: #51443f;
+  background: #f8f4ef;
+  overflow-x: hidden;
 }
 
 section {
-  padding: 90px 24px;
-  max-width: 1100px;
-  margin: auto;
+  padding: 65px 20px;
+  text-align: center;
 }
 
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 42px;
+  margin-bottom: 25px;
 }
 
 p {
-  font-size: 14px;
-  line-height: 2;
+  line-height: 1.8;
 }
 
-.eyebrow {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+button {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
 }
-
-.center {
-  text-align: center;
-}
-
-/* PORTADA */
 
 .hero {
   min-height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.hero-photo {
-  width: 100%;
-  max-width: 420px;
-  height: 520px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 230px 230px 5px 5px;
-  box-shadow: 0 15px 50px rgba(90,60,50,.08);
-}
-
-.hero-top {
-  letter-spacing: 5px;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(70px, 12vw, 115px);
-  letter-spacing: 5px;
-  line-height: .9;
-  color: var(--detalle);
-  margin: 35px 0 5px;
-}
-
-.hero-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(25px, 5vw, 38px);
-  font-weight: 500;
-  letter-spacing: 7px;
-  text-transform: uppercase;
-  margin: 20px 0;
-  color: var(--texto);
-}
-
-.hero-text {
-  max-width: 350px;
-  margin: 10px auto;
-}
-
-/* BOTONES */
-
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--detalle);
+  background:
+    linear-gradient(rgba(40,30,25,.35), rgba(40,30,25,.35)),
+    url('portada.jpeg') center/cover no-repeat;
   color: white;
-  padding: 15px 30px;
-  border-radius: 50px;
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  cursor: pointer;
+  padding: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(65px, 12vw, 120px);
+  letter-spacing: 5px;
+}
+
+.hero h2 {
+  font-size: clamp(25px, 5vw, 50px);
+  margin: 0;
+}
+
+.hero p {
+  letter-spacing: 5px;
   margin-top: 20px;
-  transition: .3s ease;
 }
 
-.btn:hover {
-  background: var(--texto);
-  transform: translateY(-2px);
+.ornamento {
+  font-size: 30px;
+  margin: 20px;
 }
 
-/* TITULOS */
-
-.section-title {
-  font-size: 55px;
-  margin: 15px 0;
-  color: var(--detalle);
-}
-
-.section-description {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* GALERIAS */
-
-.gallery-wrapper {
+.contenedor {
   max-width: 1000px;
-  margin: 45px auto 0;
-  overflow: hidden;
+  margin: auto;
 }
 
-.gallery-track {
-  display: flex;
-  transition: transform .55s ease;
-}
-
-.gallery-page {
-  flex: 0 0 100%;
-  min-width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  align-items: start;
-}
-
-.gallery-page img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 8px 25px rgba(70,50,40,.06);
-}
-
-.gallery-page img:nth-child(even) {
-  margin-top: 30px;
-}
-
-.art-page img {
-  object-fit: contain;
-  background: rgba(255,255,255,.55);
-}
-
-/* CONTROLES */
-
-.gallery-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  margin-top: 35px;
-}
-
-.arrow {
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--detalle);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--detalle);
-  font-size: 26px;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.arrow:hover {
-  background: var(--detalle);
-  color: white;
-}
-
-.counter {
-  font-size: 10px;
+.subtitulo {
+  font-size: 14px;
   letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
 }
 
-/* VIDEOS */
-
-.video-gallery {
-  max-width: 750px;
-  margin: 45px auto 0;
-  overflow: hidden;
+.fondo {
+  background:
+    linear-gradient(rgba(248,244,239,.88),rgba(248,244,239,.88)),
+    url('fondo.jpeg') center/cover fixed;
 }
 
-.video-track {
-  display: flex;
-  transition: transform .55s ease;
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+  gap: 15px;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.video-slide {
-  flex: 0 0 100%;
-  min-width: 100%;
-  padding: 12px;
-  background: rgba(255,255,255,.7);
-  border: 1px solid #e4d4cb;
-  border-radius: 8px;
-}
-
-.video-slide video {
-  display: block;
+.galeria img {
   width: 100%;
-  max-height: 550px;
+  height: 280px;
+  object-fit: cover;
   border-radius: 5px;
+  transition: transform .3s;
+}
+
+.galeria img:hover {
+  transform: scale(1.03);
+}
+
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 20px;
+}
+
+.videos video {
+  width: 100%;
+  border-radius: 8px;
   background: #000;
 }
 
-/* SPOTIFY */
-
-.playlist-card {
-  max-width: 750px;
-  margin: 45px auto 0;
-  padding: 25px;
-  background: rgba(255,255,255,.75);
-  border: 1px solid #e4d4cb;
-  border-radius: 18px;
-  box-shadow: 0 15px 45px rgba(90,60,50,.06);
-}
-
-.playlist-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 38px;
-  color: var(--detalle);
-  margin: 5px 0 15px;
-}
-
-.playlist-card iframe {
-  display: block;
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-}
-
-/* FECHA */
-
-.event-card {
-  max-width: 570px;
-  margin: 45px auto 0;
-  padding: 60px 35px;
-  background: rgba(255,255,255,.82);
-  border: 1px solid #e4d4cb;
-  outline: 1px solid #e4d4cb;
-  outline-offset: 8px;
-}
-
-.event-label {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--detalle);
-}
-
-.event-day {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 115px;
-  line-height: 1;
-  color: var(--detalle);
-  margin: 20px 0 5px;
-}
-
-.event-month {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  letter-spacing: 4px;
-}
-
-.event-time {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 38px;
-}
-
-.event-place {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 30px;
-}
-
-/* DIVISION */
-
-.divider {
-  width: 55px;
-  height: 1px;
-  background: var(--rosa);
-  margin: 30px auto;
-}
-
-/* REGALO */
-
-.gift-card {
-  max-width: 480px;
-  margin: 35px auto 0;
-  padding: 40px 25px;
-  background: rgba(255,255,255,.85);
-  border-radius: 5px;
-}
-
-.alias {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  letter-spacing: 3px;
-  margin: 15px 0;
-}
-
-/* MENSAJES */
-
-.message-card {
+.tarjeta {
   max-width: 650px;
-  margin: 40px auto;
-  padding: 40px 30px;
-  background: rgba(255,255,255,.88);
-  border: 1px solid #e4d4cb;
-  border-radius: 8px;
+  margin: auto;
+  padding: 35px 25px;
+  background: rgba(255,255,255,.65);
+  border: 1px solid #e8ddd2;
+  border-radius: 10px;
 }
 
-.message-input {
+.boton {
+  display: inline-block;
+  border: 1px solid #a78e7b;
+  background: #a78e7b;
+  color: white;
+  padding: 13px 25px;
+  margin: 12px;
+  text-decoration: none;
+  border-radius: 3px;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.boton:hover {
+  background: #806858;
+}
+
+.boton:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+input, textarea {
   width: 100%;
   padding: 14px;
+  border: 1px solid #dfd1c4;
+  border-radius: 4px;
   margin: 10px 0;
-  border: 1px solid #e4d4cb;
-  border-radius: 5px;
-  background: rgba(250,246,242,.7);
-  color: var(--texto);
+  background: rgba(255,255,255,.85);
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  outline: none;
 }
 
-.message-input:focus {
-  border-color: var(--detalle);
-}
-
-textarea.message-input {
+textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-.messages-list {
-  max-width: 650px;
-  margin: 35px auto;
-  text-align: left;
-}
-
-.saved-message {
-  background: rgba(255,255,255,.88);
-  border-left: 2px solid var(--rosa);
-  padding: 20px;
-  margin: 18px 0;
-  border-radius: 4px;
-  overflow-wrap: anywhere;
-}
-
-.saved-message h3 {
-  color: var(--detalle);
-  font-size: 24px;
-  margin: 0 0 8px;
-}
-
-.saved-message p {
-  margin: 0;
-  white-space: pre-wrap;
-}
-
-.no-messages {
-  font-size: 13px;
-  opacity: .7;
-}
-
 .message-status {
-  font-size: 13px;
-  line-height: 1.8;
-  margin-top: 20px;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
-/* FINAL */
-
-.final-section {
-  padding: 100px 20px;
+footer {
+  padding: 45px 20px;
   text-align: center;
-}
-
-.final-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(35px, 6vw, 60px);
-  color: var(--detalle);
-  font-weight: 400;
-  line-height: 1.3;
+  font-size: 25px;
 }
 
-/* CELULARES */
+#playlist iframe {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+}
 
-@media(max-width:700px) {
-
+@media(max-width:600px) {
   section {
-    padding: 70px 20px;
+    padding: 45px 15px;
   }
 
-  .hero-photo {
-    height: 430px;
-    max-width: 340px;
+  h2 {
+    font-size: 34px;
   }
 
-  .hero-title {
-    font-size: 78px;
+  .galeria {
+    grid-template-columns: repeat(2,1fr);
+    gap: 8px;
+  }
+
+  .galeria img {
+    height: 210px;
+  }
+
+  .hero h1 {
     letter-spacing: 2px;
-  }
-
-  .hero-name {
-    letter-spacing: 5px;
-    font-size: 30px;
-  }
-
-  .section-title {
-    font-size: 45px;
-  }
-
-  .gallery-page {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .gallery-page img {
-    height: 230px;
-  }
-
-  .gallery-page img:nth-child(even) {
-    margin-top: 20px;
-  }
-
-  .event-card {
-    padding: 45px 20px;
-  }
-
-  .event-day {
-    font-size: 90px;
-  }
-
-  .event-month {
-    font-size: 23px;
-  }
-
-  .event-time {
-    font-size: 32px;
-  }
-
-  .alias {
-    font-size: 32px;
-  }
-
-  .message-card {
-    padding: 30px 20px;
-  }
-
-  .playlist-card {
-    padding: 15px;
-  }
-
-  .playlist-heading {
-    font-size: 30px;
-  }
-
-  body {
-    background-attachment: scroll, scroll;
-  }
-}
-
-@media(max-width:380px) {
-  .gallery-page img {
-    height: 190px;
-  }
-
-  .hero-photo {
-    height: 370px;
   }
 }
 </style>
@@ -524,476 +223,220 @@ textarea.message-input {
 
 <body>
 
-<!-- 1. PORTADA -->
-
+<!-- PORTADA -->
 <section class="hero">
-
-  <p class="hero-top">Una celebración · Un sueño</p>
-
-  <img class="hero-photo" src="portada.jpeg" alt="Francesca">
-
-  <h1 class="hero-title">MIS XV</h1>
-
-  <div class="hero-name">FRANCESCA</div>
-
-  <p class="hero-text">
-    Quince años de sueños, momentos inolvidables
-    y muchas historias por compartir.
-    Te invito a celebrar conmigo.
-  </p>
-
-  <a href="#historia" class="btn">DESCUBRIR</a>
-
+  <p>MIS XV</p>
+  <div class="ornamento">♡</div>
+  <h1>Francesca</h1>
+  <h2>Mis quince años</h2>
+  <p>28 · 11 · 2026</p>
+  <div class="ornamento">✧</div>
 </section>
 
-<!-- 2. MI HISTORIA -->
-
-<section id="historia" class="center">
-
-  <p class="eyebrow">Un viaje en el tiempo</p>
-
-  <h2 class="section-title">Mi historia</h2>
-
-  <p class="section-description">
-    Cada fotografía guarda un recuerdo, una sonrisa
-    y un pedacito de mi vida.
-    Gracias por acompañarme en este viaje.
-  </p>
-
-  <div class="gallery-wrapper" id="historiaGallery">
-    <div class="gallery-track"></div>
+<!-- BIENVENIDA -->
+<section class="fondo">
+  <div class="contenedor">
+    <h2>Un sueño que comienza</h2>
+    <p>
+      Hay momentos que se convierten en recuerdos para toda la vida.
+      Hoy quiero compartir con ustedes uno de los más especiales.
+      <br><br>
+      Los invito a celebrar mis XV años, una noche llena de amor,
+      alegría, sueños y momentos inolvidables.
+    </p>
+    <div class="ornamento">♡</div>
   </div>
-
-  <div class="gallery-controls">
-
-    <button class="arrow" onclick="mover('historiaGallery',-1)">‹</button>
-
-    <span class="counter" id="historiaCounter"></span>
-
-    <button class="arrow" onclick="mover('historiaGallery',1)">›</button>
-
-  </div>
-
 </section>
 
-<!-- 3. MI ARTE -->
-
-<section class="center" id="arte">
-
-  <p class="eyebrow">Mi pequeño universo</p>
-
-  <h2 class="section-title">Mi arte</h2>
-
-  <p class="section-description">
-    Un espacio para mostrar aquello que imagino,
-    creo y expreso a través de mis dibujos e instrumentos musicales.
-  </p>
-
-  <div class="gallery-wrapper" id="arteGallery">
-    <div class="gallery-track"></div>
-  </div>
-
-  <div class="gallery-controls">
-
-    <button class="arrow" onclick="mover('arteGallery',-1)">‹</button>
-
-    <span class="counter" id="arteCounter"></span>
-
-    <button class="arrow" onclick="mover('arteGallery',1)">›</button>
-
-  </div>
-
+<!-- HISTORIA -->
+<section>
+  <h2>Mi historia</h2>
+  <p class="subtitulo">Cada recuerdo forma parte de quien soy</p>
+  <div class="galeria" id="galeriaHistoria"></div>
 </section>
 
-<!-- 4. VIDEOS -->
+<!-- VIDEOS -->
+<section class="fondo">
+  <h2>Momentos especiales</h2>
+  <p class="subtitulo">Un poquito de mi historia en videos</p>
+  <div class="contenedor videos">
+    <video controls preload="metadata">
+      <source src="video.mp4" type="video/mp4">
+    </video>
 
-<section class="center" id="videos">
+    <video controls preload="metadata">
+      <source src="video1.mp4" type="video/mp4">
+    </video>
 
-  <p class="eyebrow">Un recuerdo especial</p>
+    <video controls preload="metadata">
+      <source src="video2.mp4" type="video/mp4">
+    </video>
 
-  <h2 class="section-title">Un poquito de mí</h2>
+    <video controls preload="metadata">
+      <source src="video3.mp4" type="video/mp4">
+    </video>
 
-  <p class="section-description">
-    Algunos momentos que quiero compartir con ustedes.
-  </p>
-
-  <div class="video-gallery">
-
-    <div class="video-track" id="videoTrack"></div>
-
+    <video controls preload="metadata">
+      <source src="video4.mp4" type="video/mp4">
+    </video>
   </div>
-
-  <div class="gallery-controls">
-
-    <button class="arrow" onclick="moverVideo(-1)">‹</button>
-
-    <span class="counter" id="videoCounter"></span>
-
-    <button class="arrow" onclick="moverVideo(1)">›</button>
-
-  </div>
-
 </section>
 
-<!-- 5. PLAYLIST SPOTIFY -->
-
-<section class="center" id="playlist">
-
-  <p class="eyebrow">Canciones que me acompañan</p>
-
-  <h2 class="section-title">Mi música</h2>
-
-  <p class="section-description">
-    Un poquito de las canciones que me gustan,
-    que me acompañan y que forman parte de mí.
-  </p>
-
-  <div class="playlist-card">
-
-    <h3 class="playlist-heading">♡ Mi playlist ♡</h3>
-
-    <iframe
-      src="https://open.spotify.com/embed/playlist/2hzWDBpejdgmqqUbDigwRk?utm_source=generator&theme=0"
-      height="352"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-
-  </div>
-
+<!-- GALERÍA -->
+<section>
+  <h2>Mis momentos</h2>
+  <p class="subtitulo">Fotos que quiero compartir con ustedes</p>
+  <div class="galeria" id="galeriaArte"></div>
 </section>
 
-<!-- 6. FECHA -->
+<!-- MUSICA -->
+<section class="fondo" id="playlist">
+  <h2>La música de mi noche</h2>
+  <p class="subtitulo">Para disfrutar y bailar juntos</p>
 
-<section class="center" id="evento">
+  <iframe
+    src="https://open.spotify.com/embed/playlist/2hzWDBpejdgmqqUbDigwRk?utm_source=generator&theme=0"
+    height="352"
+    frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
+</section>
 
-  <p class="eyebrow">Una fecha para recordar</p>
+<!-- EVENTO -->
+<section>
+  <h2>La celebración</h2>
+  <div class="tarjeta">
+    <p class="subtitulo">Te espero para celebrar juntos</p>
 
-  <h2 class="section-title">MIS XV</h2>
+    <h3 style="font-size:32px">28 de noviembre de 2026</h3>
 
-  <div class="event-card">
+    <p>18:00 hs</p>
 
-    <p class="event-label">Te invito a celebrar conmigo</p>
+    <div class="ornamento">♡</div>
 
-    <div class="divider"></div>
-
-    <p class="event-label">SÁBADO</p>
-
-    <div class="event-day">28</div>
-
-    <div class="event-month">NOVIEMBRE · 2026</div>
-
-    <div class="divider"></div>
-
-    <p class="event-label">HORARIO</p>
-
-    <div class="event-time">18:00 HS</div>
-
-    <div class="divider"></div>
-
-    <p class="event-label">LUGAR</p>
-
-    <div class="event-place">Zorzal 3725</div>
-
+    <h3 style="font-size:30px">Zorzal 3725</h3>
     <p>Campo Salles · Buenos Aires</p>
 
-    <a class="btn"
-       href="https://www.google.com/maps/place/Zorzal+3725,+Campo+Salles,+Provincia+de+Buenos+Aires/@-33.4136275,-60.2461301,17z/data=!3m1!4b1!4m6!3m5!1s0x95b760c28ddd7fe3:0x7697bcdcaf1d62e2!8m2!3d-33.413632!4d-60.2435552!16s%2Fg%2F11jyjl12b9?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D"
-       target="_blank"
-       rel="noopener noreferrer">
-      CÓMO LLEGAR
+    <a class="boton"
+       href="https://www.google.com/maps/search/?api=1&query=Zorzal+3725+Campo+Salles+Buenos+Aires"
+       target="_blank">
+       CÓMO LLEGAR
     </a>
-
   </div>
-
 </section>
 
-<!-- 7. MI REGALO -->
+<!-- ALIAS -->
+<section class="fondo">
+  <h2>Un regalo especial</h2>
+  <p>Si querés regalarme algo, podés hacerlo a través de mi alias.</p>
 
-<section class="center" id="regalo">
+  <div class="tarjeta">
+    <p class="subtitulo">Mi alias</p>
+    <h3 id="alias" style="font-size:40px">franud</h3>
 
-  <p class="eyebrow">Un detalle especial</p>
-
-  <h2 class="section-title">Mi regalo</h2>
-
-  <p class="section-description">
-    Tu presencia es mi regalo más importante.
-    Si deseas regalarme algo más,
-    te comparto mi alias.
-  </p>
-
-  <div class="gift-card">
-
-    <p class="eyebrow">ALIAS</p>
-
-    <div class="alias" id="alias">franud</div>
-
-    <button class="btn" onclick="copiarAlias()">
+    <button class="boton" onclick="copiarAlias()">
       COPIAR ALIAS
     </button>
 
+    <p id="estadoAlias"></p>
   </div>
-
 </section>
 
-<!-- 8. MENSAJES -->
+<!-- MENSAJES -->
+<section id="mensajes">
+  <h2>Dejá tu mensaje</h2>
+  <p class="subtitulo">Me encantaría guardar tus palabras</p>
 
-<section class="center" id="mensajes">
-
-  <p class="eyebrow">Palabras que quedan en el corazón</p>
-
-  <h2 class="section-title">Dejame un mensaje</h2>
-
-  <p class="section-description">
-    Me encantaría guardar unas palabras tuyas
-    para recordar este momento tan especial.
-  </p>
-
-  <div class="message-card">
-
+  <div class="tarjeta message-card">
     <input
       type="text"
       id="nombreMensaje"
-      class="message-input"
-      placeholder="Tu nombre"
       maxlength="60"
+      placeholder="Tu nombre"
       autocomplete="name">
 
     <textarea
       id="textoMensaje"
-      class="message-input"
-      placeholder="Escribí tu mensaje para Francesca..."
-      maxlength="500"></textarea>
+      maxlength="500"
+      placeholder="Escribí tu mensaje para Francesca..."></textarea>
 
-    <button class="btn" onclick="guardarMensaje()">
+    <button class="boton" onclick="guardarMensaje()">
       GUARDAR MENSAJE
     </button>
 
     <p id="estadoMensaje" class="message-status" aria-live="polite"></p>
-
   </div>
 
-  <div class="messages-list" id="listaMensajes"></div>
-
+  <div id="listaMensajes" style="margin-top:25px"></div>
 </section>
 
-<!-- 9. FINAL -->
-
-<section class="final-section">
-
-  <div class="divider"></div>
-
-  <p class="final-title">
-    Gracias por ser parte<br>
-    de mi historia ♡
+<!-- FINAL -->
+<section class="fondo">
+  <h2>Gracias</h2>
+  <p>
+    Gracias por ser parte de mi historia,
+    por acompañarme y por compartir conmigo este momento tan especial.
   </p>
-
-  <p class="eyebrow">FIN</p>
-
-  <div class="divider"></div>
-
+  <div class="ornamento">♡</div>
+  <h2>Francesca</h2>
 </section>
+
+<footer>
+  Mis XV · 2026 ♡
+</footer>
 
 <script>
 
-/* GALERIAS DE FOTOS */
+/* GALERÍA DE HISTORIA H1 a H130 */
+const galeriaHistoria = document.getElementById('galeriaHistoria');
 
-const galerias = {};
+for (let i = 1; i <= 130; i++) {
+  const img = document.createElement('img');
+  img.src = 'H' + i + '.jpeg';
+  img.alt = 'Recuerdo ' + i;
+  img.loading = 'lazy';
 
-function crearGaleria(id, prefijo, cantidad, contadorId, claseExtra = '') {
-
-  const contenedor = document.getElementById(id);
-  const track = contenedor.querySelector('.gallery-track');
-
-  const totalPaginas = Math.ceil(cantidad / 4);
-
-  galerias[id] = {
-    pagina: 0,
-    total: totalPaginas,
-    contador: document.getElementById(contadorId)
+  img.onerror = function() {
+    this.style.display = 'none';
   };
 
-  for (let pagina = 0; pagina < totalPaginas; pagina++) {
-
-    const slide = document.createElement('div');
-
-    slide.className = 'gallery-page ' + claseExtra;
-
-    const inicio = pagina * 4 + 1;
-    const fin = Math.min(inicio + 3, cantidad);
-
-    for (let numero = inicio; numero <= fin; numero++) {
-
-      const img = document.createElement('img');
-
-      img.src = prefijo + numero + '.jpeg';
-      img.alt = prefijo + numero;
-      img.loading = 'lazy';
-
-      slide.appendChild(img);
-
-    }
-
-    track.appendChild(slide);
-
-  }
-
-  actualizar(id);
+  galeriaHistoria.appendChild(img);
 }
 
-function actualizar(id) {
+/* GALERÍA A1 a A80 */
+const galeriaArte = document.getElementById('galeriaArte');
 
-  const contenedor = document.getElementById(id);
-  const track = contenedor.querySelector('.gallery-track');
+for (let i = 1; i <= 80; i++) {
+  const img = document.createElement('img');
+  img.src = 'A' + i + '.jpeg';
+  img.alt = 'Foto ' + i;
+  img.loading = 'lazy';
 
-  const datos = galerias[id];
+  img.onerror = function() {
+    this.style.display = 'none';
+  };
 
-  track.style.transform =
-    'translateX(-' + (datos.pagina * 100) + '%)';
-
-  datos.contador.textContent =
-    (datos.pagina + 1) + ' / ' + datos.total;
-
+  galeriaArte.appendChild(img);
 }
 
-function mover(id, direccion) {
+/* COPIAR ALIAS */
+function copiarAlias() {
+  const alias = 'franud';
 
-  const datos = galerias[id];
-
-  datos.pagina += direccion;
-
-  if (datos.pagina < 0) {
-    datos.pagina = datos.total - 1;
-  }
-
-  if (datos.pagina >= datos.total) {
-    datos.pagina = 0;
-  }
-
-  actualizar(id);
+  navigator.clipboard.writeText(alias)
+    .then(function() {
+      document.getElementById('estadoAlias').textContent =
+        '¡Alias copiado! ♡';
+    })
+    .catch(function() {
+      document.getElementById('estadoAlias').textContent =
+        'Alias: franud';
+    });
 }
 
-/* HISTORIA H1 A H130 */
-
-crearGaleria(
-  'historiaGallery',
-  'H',
-  130,
-  'historiaCounter'
-);
-
-/* ARTE A1 A A80 */
-
-crearGaleria(
-  'arteGallery',
-  'A',
-  80,
-  'arteCounter',
-  'art-page'
-);
-
-/* VIDEOS */
-
-const videos = [
-  'video.mp4',
-  'video1.mp4',
-  'video2.mp4',
-  'video3.mp4',
-  'video4.mp4'
-];
-
-let videoActual = 0;
-
-const videoTrack = document.getElementById('videoTrack');
-const videoCounter = document.getElementById('videoCounter');
-
-videos.forEach(function(nombre) {
-
-  const slide = document.createElement('div');
-
-  slide.className = 'video-slide';
-
-  const video = document.createElement('video');
-
-  video.controls = true;
-  video.preload = 'none';
-  video.playsInline = true;
-
-  const source = document.createElement('source');
-
-  source.src = nombre;
-  source.type = 'video/mp4';
-
-  video.appendChild(source);
-  slide.appendChild(video);
-  videoTrack.appendChild(slide);
-
-});
-
-function actualizarVideo() {
-
-  videoTrack.style.transform =
-    'translateX(-' + (videoActual * 100) + '%)';
-
-  videoCounter.textContent =
-    (videoActual + 1) + ' / ' + videos.length;
-
-  const todos = videoTrack.querySelectorAll('video');
-
-  todos.forEach(function(video, indice) {
-
-    if (indice !== videoActual) {
-      video.pause();
-    }
-
-  });
-
-}
-
-function moverVideo(direccion) {
-
-  videoActual += direccion;
-
-  if (videoActual < 0) {
-    videoActual = videos.length - 1;
-  }
-
-  if (videoActual >= videos.length) {
-    videoActual = 0;
-  }
-
-  actualizarVideo();
-}
-
-actualizarVideo();
-
-/* MENSAJES: GUARDADO LOCAL */
-
-const CLAVE_MENSAJES = 'mensajesFrancesca';
-
-function obtenerMensajes() {
-
-  try {
-
-    const datos = localStorage.getItem(CLAVE_MENSAJES);
-
-    if (!datos) {
-      return [];
-    }
-
-    const mensajes = JSON.parse(datos);
-
-    return Array.isArray(mensajes) ? mensajes : [];
-
-  } catch (error) {
-
-    console.error('Error al leer mensajes:', error);
-
-    return [];
-
-  }
-
-}
+/* MENSAJES: RECOPILACIÓN EN GOOGLE SHEETS */
+const URL_MENSAJES = "https://script.google.com/macros/s/AKfycbxb8xMFxv9rNbc_BXZ2l231KDvFtzHTiS42RyNUz8OPrcQgEWc8i79Nj7SV3TG_BFtdIQ/exec";
 
 function guardarMensaje() {
 
@@ -1007,151 +450,70 @@ function guardarMensaje() {
   estado.textContent = '';
 
   if (!nombre || !mensaje) {
-
     estado.textContent = 'Por favor, completá tu nombre y tu mensaje.';
     return;
-
   }
 
   if (nombre.length > 60 || mensaje.length > 500) {
-
     estado.textContent = 'El nombre o el mensaje supera el límite permitido.';
     return;
-
   }
 
-  const mensajes = obtenerMensajes();
+  const boton = document.querySelector('#mensajes .message-card button');
 
-  mensajes.unshift({
+  boton.disabled = true;
+  boton.textContent = 'ENVIANDO...';
+
+  const datos = JSON.stringify({
     nombre: nombre,
-    mensaje: mensaje,
-    fecha: new Date().toISOString()
+    mensaje: mensaje
   });
 
-  try {
+  fetch(URL_MENSAJES, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8'
+    },
+    body: datos
+  })
 
-    localStorage.setItem(CLAVE_MENSAJES, JSON.stringify(mensajes));
-
-    /* Verificamos que se haya guardado */
-
-    const comprobacion = localStorage.getItem(CLAVE_MENSAJES);
-
-    if (!comprobacion) {
-      throw new Error('No se pudo verificar el guardado.');
-    }
-
+  .then(function() {
     campoNombre.value = '';
     campoTexto.value = '';
 
-    mostrarMensajes();
+    estado.textContent =
+      '¡Gracias! Tu mensaje fue enviado. ♡';
+  })
 
-    estado.textContent = '¡Tu mensaje quedó guardado! Gracias por tus palabras ♡';
-
-  } catch (error) {
-
-    console.error('Error al guardar:', error);
+  .catch(function(error) {
+    console.error(error);
 
     estado.textContent =
-      'No se pudo guardar el mensaje en este navegador. ' +
-      'Revisá si el navegador permite guardar datos de este sitio.';
+      'No se pudo enviar. Por favor, intentá nuevamente.';
+  })
 
-  }
-
+  .finally(function() {
+    boton.disabled = false;
+    boton.textContent = 'GUARDAR MENSAJE';
+  });
 }
 
+/* MENSAJES EN LA PÁGINA */
 function mostrarMensajes() {
-
   const contenedor = document.getElementById('listaMensajes');
-
-  const mensajes = obtenerMensajes();
 
   contenedor.innerHTML = '';
 
-  if (mensajes.length === 0) {
+  const texto = document.createElement('p');
+  texto.className = 'no-messages';
+  texto.textContent =
+    'Gracias por compartir tus palabras con Francesca ♡';
 
-    const texto = document.createElement('p');
-
-    texto.className = 'no-messages';
-    texto.textContent = 'Todavía no hay mensajes.';
-
-    contenedor.appendChild(texto);
-
-    return;
-
-  }
-
-  mensajes.forEach(function(item) {
-
-    const tarjeta = document.createElement('div');
-
-    tarjeta.className = 'saved-message';
-
-    const nombre = document.createElement('h3');
-
-    nombre.textContent = item.nombre || 'Invitado';
-
-    const texto = document.createElement('p');
-
-    texto.textContent = item.mensaje || '';
-
-    tarjeta.appendChild(nombre);
-    tarjeta.appendChild(texto);
-
-    contenedor.appendChild(tarjeta);
-
-  });
-
+  contenedor.appendChild(texto);
 }
-
-/* Mostrar mensajes al abrir la página */
 
 mostrarMensajes();
-
-/* COPIAR ALIAS */
-
-function copiarAlias() {
-
-  const alias = document.getElementById('alias').innerText;
-
-  if (navigator.clipboard && window.isSecureContext) {
-
-    navigator.clipboard.writeText(alias)
-      .then(() => alert('¡Alias copiado!'))
-      .catch(() => copiarAlternativo(alias));
-
-  } else {
-
-    copiarAlternativo(alias);
-
-  }
-
-}
-
-function copiarAlternativo(texto) {
-
-  const area = document.createElement('textarea');
-
-  area.value = texto;
-  area.style.position = 'fixed';
-  area.style.opacity = '0';
-
-  document.body.appendChild(area);
-  area.select();
-
-  try {
-
-    document.execCommand('copy');
-    alert('¡Alias copiado!');
-
-  } catch (e) {
-
-    alert('Copiá manualmente el alias: ' + texto);
-
-  }
-
-  area.remove();
-
-}
 
 </script>
 
