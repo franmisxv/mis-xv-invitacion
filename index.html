@@ -961,7 +961,110 @@ function moverVideo(direccion) {
 actualizarVideo();
 
 /* MENSAJES PROVISIONALES */
+/* MENSAJES CON GOOGLE SHEETS */
 
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxb8xMFxv9rNbc_BXZ2l231KDvFtzHTiS42RyNUz8OPrcQgEWc8i79Nj7SV3TG_BFtdIQ/exec";
+
+async function guardarMensaje() {
+
+  const nombre = document.getElementById('nombreMensaje').value.trim();
+  const mensaje = document.getElementById('textoMensaje').value.trim();
+
+  if (!nombre || !mensaje) {
+    alert('Por favor, completá tu nombre y tu mensaje.');
+    return;
+  }
+
+  if (nombre.length > 60 || mensaje.length > 500) {
+    alert('El mensaje es demasiado largo.');
+    return;
+  }
+
+  const boton = document.querySelector('#mensajes .message-card .btn');
+  boton.disabled = true;
+  boton.textContent = 'ENVIANDO...';
+
+  try {
+
+    await fetch(URL_SCRIPT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify({
+        nombre: nombre,
+        mensaje: mensaje
+      })
+    });
+
+    document.getElementById('nombreMensaje').value = '';
+    document.getElementById('textoMensaje').value = '';
+
+    await mostrarMensajes();
+
+    alert('¡Tu mensaje fue guardado! ♡');
+
+  } catch (error) {
+
+    alert('No se pudo enviar el mensaje. Intentá nuevamente.');
+
+  } finally {
+
+    boton.disabled = false;
+    boton.textContent = 'GUARDAR MENSAJE';
+
+  }
+}
+
+async function mostrarMensajes() {
+
+  const contenedor = document.getElementById('listaMensajes');
+
+  contenedor.innerHTML =
+    '<p class="no-messages">Cargando mensajes...</p>';
+
+  try {
+
+    const respuesta = await fetch(URL_SCRIPT + '?t=' + Date.now());
+    const datos = await respuesta.json();
+
+    contenedor.innerHTML = '';
+
+    if (!datos.ok || !datos.mensajes || datos.mensajes.length === 0) {
+
+      contenedor.innerHTML =
+        '<p class="no-messages">Todavía no hay mensajes.</p>';
+
+      return;
+    }
+
+    datos.mensajes.forEach(function(item) {
+
+      const tarjeta = document.createElement('div');
+      tarjeta.className = 'saved-message';
+
+      const nombre = document.createElement('h3');
+      nombre.textContent = item.nombre;
+
+      const texto = document.createElement('p');
+      texto.textContent = item.mensaje;
+
+      tarjeta.appendChild(nombre);
+      tarjeta.appendChild(texto);
+
+      contenedor.appendChild(tarjeta);
+
+    });
+
+  } catch (error) {
+
+    contenedor.innerHTML =
+      '<p class="no-messages">No se pudieron cargar los mensajes.</p>';
+
+  }
+}
+
+mostrarMensajes();
 function guardarMensaje() {
 
   const nombre = document.getElementById('nombreMensaje').value.trim();
