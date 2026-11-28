@@ -27,7 +27,6 @@ body {
   color: var(--texto);
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-
   background-color: var(--fondo);
   background-image:
     linear-gradient(rgba(250,246,242,.38), rgba(250,246,242,.38)),
@@ -158,7 +157,7 @@ p {
   margin: 0 auto;
 }
 
-/* GALERIAS DE FOTOS */
+/* GALERIAS */
 
 .gallery-wrapper {
   max-width: 1000px;
@@ -259,7 +258,7 @@ p {
   background: #000;
 }
 
-/* PLAYLIST SPOTIFY */
+/* SPOTIFY */
 
 .playlist-card {
   max-width: 750px;
@@ -565,13 +564,9 @@ textarea.message-input {
   </div>
 
   <div class="gallery-controls">
-
     <button class="arrow" onclick="mover('historiaGallery',-1)">‹</button>
-
     <span class="counter" id="historiaCounter"></span>
-
     <button class="arrow" onclick="mover('historiaGallery',1)">›</button>
-
   </div>
 
 </section>
@@ -594,13 +589,9 @@ textarea.message-input {
   </div>
 
   <div class="gallery-controls">
-
     <button class="arrow" onclick="mover('arteGallery',-1)">‹</button>
-
     <span class="counter" id="arteCounter"></span>
-
     <button class="arrow" onclick="mover('arteGallery',1)">›</button>
-
   </div>
 
 </section>
@@ -618,19 +609,13 @@ textarea.message-input {
   </p>
 
   <div class="video-gallery">
-
     <div class="video-track" id="videoTrack"></div>
-
   </div>
 
   <div class="gallery-controls">
-
     <button class="arrow" onclick="moverVideo(-1)">‹</button>
-
     <span class="counter" id="videoCounter"></span>
-
     <button class="arrow" onclick="moverVideo(1)">›</button>
-
   </div>
 
 </section>
@@ -736,7 +721,7 @@ textarea.message-input {
 
 </section>
 
-<!-- 8. PALABRAS Y MENSAJES -->
+<!-- 8. MENSAJES -->
 
 <section class="center" id="mensajes">
 
@@ -817,7 +802,6 @@ function crearGaleria(id, prefijo, cantidad, contadorId, claseExtra = '') {
   for (let pagina = 0; pagina < totalPaginas; pagina++) {
 
     const slide = document.createElement('div');
-
     slide.className = 'gallery-page ' + claseExtra;
 
     const inicio = pagina * 4 + 1;
@@ -850,7 +834,6 @@ function actualizar(id) {
 
   const contenedor = document.getElementById(id);
   const track = contenedor.querySelector('.gallery-track');
-
   const datos = galerias[id];
 
   track.style.transform =
@@ -878,24 +861,13 @@ function mover(id, direccion) {
   actualizar(id);
 }
 
-/* HISTORIA: H1 A H130 */
+/* HISTORIA */
 
-crearGaleria(
-  'historiaGallery',
-  'H',
-  130,
-  'historiaCounter'
-);
+crearGaleria('historiaGallery', 'H', 130, 'historiaCounter');
 
-/* ARTE: A1 A A80 */
+/* ARTE */
 
-crearGaleria(
-  'arteGallery',
-  'A',
-  80,
-  'arteCounter',
-  'art-page'
-);
+crearGaleria('arteGallery', 'A', 80, 'arteCounter', 'art-page');
 
 /* ==========================================
    VIDEOS
@@ -917,24 +889,19 @@ const videoCounter = document.getElementById('videoCounter');
 videos.forEach(function(nombre) {
 
   const slide = document.createElement('div');
-
   slide.className = 'video-slide';
 
   const video = document.createElement('video');
-
   video.controls = true;
   video.preload = 'none';
   video.playsInline = true;
 
   const source = document.createElement('source');
-
   source.src = nombre;
   source.type = 'video/mp4';
 
   video.appendChild(source);
-
   slide.appendChild(video);
-
   videoTrack.appendChild(slide);
 
 });
@@ -947,14 +914,8 @@ function actualizarVideo() {
   videoCounter.textContent =
     (videoActual + 1) + ' / ' + videos.length;
 
-  const todos = videoTrack.querySelectorAll('video');
-
-  todos.forEach(function(video, indice) {
-
-    if (indice !== videoActual) {
-      video.pause();
-    }
-
+  videoTrack.querySelectorAll('video').forEach(function(video, indice) {
+    if (indice !== videoActual) video.pause();
   });
 
 }
@@ -963,13 +924,8 @@ function moverVideo(direccion) {
 
   videoActual += direccion;
 
-  if (videoActual < 0) {
-    videoActual = videos.length - 1;
-  }
-
-  if (videoActual >= videos.length) {
-    videoActual = 0;
-  }
+  if (videoActual < 0) videoActual = videos.length - 1;
+  if (videoActual >= videos.length) videoActual = 0;
 
   actualizarVideo();
 }
@@ -977,14 +933,14 @@ function moverVideo(direccion) {
 actualizarVideo();
 
 /* ==========================================
-   MENSAJES - GOOGLE APPS SCRIPT
+   MENSAJES - GOOGLE SHEETS
 ========================================== */
 
-/* DIRECCIÓN DE TU APLICACIÓN */
+/* URL DEL GOOGLE APPS SCRIPT */
 
 const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxb8xMFxv9rNbc_BXZ2l231KDvFtzHTiS42RyNUz8OPrcQgEWc8i79Nj7SV3TG_BFtdIQ/exec";
 
-/* ENVIAR MENSAJE */
+/* ENVÍO */
 
 async function guardarMensaje() {
 
@@ -997,11 +953,6 @@ async function guardarMensaje() {
 
   if (!nombre || !mensaje) {
     alert('Por favor, completá tu nombre y tu mensaje.');
-    return;
-  }
-
-  if (nombre.length > 60 || mensaje.length > 500) {
-    alert('El nombre o el mensaje supera el límite permitido.');
     return;
   }
 
@@ -1025,17 +976,14 @@ async function guardarMensaje() {
     nombreInput.value = '';
     mensajeInput.value = '';
 
-    alert('Gracias por dejar tu mensaje ♡');
+    alert('¡Gracias por dejar tu mensaje! ♡');
 
-    setTimeout(function() {
-      mostrarMensajes();
-    }, 2000);
+    mostrarMensajes();
 
   } catch (error) {
 
-    console.error('Error al enviar mensaje:', error);
-
-    alert('No se pudo enviar. Revisá tu conexión e intentá nuevamente.');
+    console.error(error);
+    alert('No se pudo enviar el mensaje. Intentá nuevamente.');
 
   } finally {
 
@@ -1045,7 +993,9 @@ async function guardarMensaje() {
   }
 }
 
-/* LEER MENSAJES DE GOOGLE SHEETS */
+/* ==========================================
+   CARGAR MENSAJES - JSONP
+========================================== */
 
 function mostrarMensajes() {
 
@@ -1055,37 +1005,51 @@ function mostrarMensajes() {
     '<p class="no-messages">Cargando mensajes...</p>';
 
   const callbackName =
-    'mensajesCallback_' + Date.now() + '_' +
-    Math.floor(Math.random() * 10000);
+    'francescaMensajes_' + Date.now() + '_' +
+    Math.floor(Math.random() * 100000);
 
   const script = document.createElement('script');
 
-  let terminado = false;
+  let finalizado = false;
+
+  const tiempoLimite = setTimeout(function() {
+
+    if (finalizado) return;
+
+    finalizado = true;
+    delete window[callbackName];
+    script.remove();
+
+    contenedor.innerHTML =
+      '<p class="no-messages">La carga tardó demasiado. Recargá la página e intentá nuevamente.</p>';
+
+  }, 15000);
 
   function limpiar() {
 
-    if (terminado) return;
+    if (finalizado) return;
 
-    terminado = true;
+    finalizado = true;
 
+    clearTimeout(tiempoLimite);
     delete window[callbackName];
-
     script.remove();
 
   }
 
   window[callbackName] = function(datos) {
 
-    contenedor.innerHTML = '';
-
-    if (!datos || !datos.ok || !Array.isArray(datos.mensajes)) {
+    if (!datos || datos.ok !== true || !Array.isArray(datos.mensajes)) {
 
       contenedor.innerHTML =
-        '<p class="no-messages">No se pudieron cargar los mensajes.</p>';
+        '<p class="no-messages">No se pudieron recuperar los mensajes.</p>';
 
       limpiar();
       return;
+
     }
+
+    contenedor.innerHTML = '';
 
     if (datos.mensajes.length === 0) {
 
@@ -1094,6 +1058,7 @@ function mostrarMensajes() {
 
       limpiar();
       return;
+
     }
 
     datos.mensajes.forEach(function(item) {
@@ -1119,23 +1084,24 @@ function mostrarMensajes() {
   };
 
   script.src = URL_SCRIPT +
-    '?callback=' + encodeURIComponent(callbackName) +
+    '?callback=' + callbackName +
     '&t=' + Date.now();
 
   script.onerror = function() {
 
+    if (finalizado) return;
+
     contenedor.innerHTML =
-      '<p class="no-messages">No se pudieron cargar los mensajes. Intentá nuevamente.</p>';
+      '<p class="no-messages">No se pudo conectar con Google Sheets para leer los mensajes.</p>';
 
     limpiar();
 
   };
 
   document.body.appendChild(script);
-
 }
 
-/* CARGAR MENSAJES AL ABRIR LA INVITACIÓN */
+/* CARGA INICIAL */
 
 mostrarMensajes();
 
@@ -1150,8 +1116,12 @@ function copiarAlias() {
   if (navigator.clipboard && window.isSecureContext) {
 
     navigator.clipboard.writeText(alias)
-      .then(() => alert('¡Alias copiado!'))
-      .catch(() => copiarAlternativo(alias));
+      .then(function() {
+        alert('¡Alias copiado!');
+      })
+      .catch(function() {
+        copiarAlternativo(alias);
+      });
 
   } else {
 
