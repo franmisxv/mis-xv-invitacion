@@ -4,309 +4,519 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>FRANCESCA | MIS XV</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --fondo: #f8f3ef;
-  --rosa: #d8b7b0;
-  --texto: #66534f;
-  --oscuro: #4d3c39;
-  --blanco: #fff;
+  --fondo: #faf6f2;
+  --rosa: #d9c0b7;
+  --texto: #63534c;
+  --detalle: #a58274;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--fondo);
+  margin: 0;
   color: var(--texto);
-  text-align: center;
-  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+
+  background-color: var(--fondo);
+  background-image:
+    linear-gradient(rgba(250,246,242,.38), rgba(250,246,242,.38)),
+    url('./fondo.jpeg');
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+  background-attachment: fixed, fixed;
+}
+
+section {
+  padding: 90px 24px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-}
-
-h2 {
-  font-size: 42px;
-  margin-bottom: 20px;
+  font-weight: 400;
 }
 
 p {
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 2;
 }
 
-section {
-  padding: 75px 20px;
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-button, a {
-  -webkit-tap-highlight-color: transparent;
+.center {
+  text-align: center;
 }
 
-button {
-  cursor: pointer;
-}
-
-.btn {
-  display: inline-block;
-  padding: 13px 28px;
-  background: var(--rosa);
-  color: white;
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 2px;
-  font-size: 12px;
-  text-decoration: none;
-  margin: 10px;
-  transition: .3s;
-}
-
-.btn:hover {
-  background: var(--oscuro);
-  transform: translateY(-2px);
-}
+/* PORTADA */
 
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 25px;
-  background:
-    linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.45)),
-    url('portada.jpeg') center/cover no-repeat;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
 }
 
-.hero h1 {
-  font-size: clamp(60px, 12vw, 115px);
-  color: var(--oscuro);
-  letter-spacing: 5px;
-}
-
-.hero .sub {
-  font-size: 14px;
-  letter-spacing: 6px;
-  margin-bottom: 15px;
-}
-
-.hero .fecha {
-  font-size: 18px;
-  letter-spacing: 4px;
-  margin-top: 15px;
-}
-
-.hero .btn {
-  margin-top: 30px;
-}
-
-.decoracion {
-  font-size: 24px;
-  margin: 15px;
-  color: var(--rosa);
-}
-
-.contenedor {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.fondo {
-  background:
-    linear-gradient(rgba(248,243,239,.87), rgba(248,243,239,.92)),
-    url('fondo.jpeg') center/cover fixed;
-}
-
-.texto-invitacion {
-  font-size: 18px;
-  max-width: 750px;
-  margin: auto;
-}
-
-.datos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin: 35px 0;
-}
-
-.dato {
-  padding: 30px 20px;
-  border: 1px solid var(--rosa);
-  background: rgba(255,255,255,.4);
-}
-
-.dato h3 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.dato p {
-  font-size: 14px;
-}
-
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.galeria img {
+.hero-photo {
   width: 100%;
-  height: 280px;
+  max-width: 420px;
+  height: 520px;
   object-fit: cover;
-  display: block;
-  transition: transform .3s;
-  background: #eee;
+  object-position: center;
+  border-radius: 230px 230px 5px 5px;
+  box-shadow: 0 15px 50px rgba(90,60,50,.08);
 }
 
-.galeria img:hover {
-  transform: scale(1.025);
+.hero-top {
+  letter-spacing: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(70px, 12vw, 115px);
+  letter-spacing: 5px;
+  line-height: .9;
+  color: var(--detalle);
+  margin: 35px 0 5px;
 }
 
-.video-grid video {
-  width: 100%;
-  background: black;
-}
-
-.caja {
-  max-width: 650px;
-  margin: auto;
-  padding: 35px 25px;
-  background: rgba(255,255,255,.6);
-  border: 1px solid var(--rosa);
-}
-
-input, textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0;
-  border: 1px solid #ddc8c1;
-  background: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(25px, 5vw, 38px);
+  font-weight: 500;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin: 20px 0;
   color: var(--texto);
 }
 
-textarea {
+.hero-text {
+  max-width: 350px;
+  margin: 10px auto;
+}
+
+/* BOTONES */
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--detalle);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: .3s ease;
+}
+
+.btn:hover {
+  background: var(--texto);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: .6;
+  cursor: wait;
+  transform: none;
+}
+
+/* TITULOS */
+
+.section-title {
+  font-size: 55px;
+  margin: 15px 0;
+  color: var(--detalle);
+}
+
+.section-description {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* GALERIAS DE FOTOS */
+
+.gallery-wrapper {
+  max-width: 1000px;
+  margin: 45px auto 0;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  transition: transform .55s ease;
+}
+
+.gallery-page {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.gallery-page img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 8px 25px rgba(70,50,40,.06);
+}
+
+.gallery-page img:nth-child(even) {
+  margin-top: 30px;
+}
+
+.art-page img {
+  object-fit: contain;
+  background: rgba(255,255,255,.55);
+}
+
+/* CONTROLES */
+
+.gallery-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.arrow {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--detalle);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--detalle);
+  font-size: 26px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.arrow:hover {
+  background: var(--detalle);
+  color: white;
+}
+
+.counter {
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+/* VIDEOS */
+
+.video-gallery {
+  max-width: 750px;
+  margin: 45px auto 0;
+  overflow: hidden;
+}
+
+.video-track {
+  display: flex;
+  transition: transform .55s ease;
+}
+
+.video-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 12px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid #e4d4cb;
+  border-radius: 8px;
+}
+
+.video-slide video {
+  display: block;
+  width: 100%;
+  max-height: 550px;
+  border-radius: 5px;
+  background: #000;
+}
+
+/* PLAYLIST SPOTIFY */
+
+.playlist-card {
+  max-width: 750px;
+  margin: 45px auto 0;
+  padding: 25px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid #e4d4cb;
+  border-radius: 18px;
+  box-shadow: 0 15px 45px rgba(90,60,50,.06);
+}
+
+.playlist-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  color: var(--detalle);
+  margin: 5px 0 15px;
+}
+
+.playlist-card iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* FECHA */
+
+.event-card {
+  max-width: 570px;
+  margin: 45px auto 0;
+  padding: 60px 35px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid #e4d4cb;
+  outline: 1px solid #e4d4cb;
+  outline-offset: 8px;
+}
+
+.event-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--detalle);
+}
+
+.event-day {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 115px;
+  line-height: 1;
+  color: var(--detalle);
+  margin: 20px 0 5px;
+}
+
+.event-month {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  letter-spacing: 4px;
+}
+
+.event-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+}
+
+.event-place {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+}
+
+/* DIVISION */
+
+.divider {
+  width: 55px;
+  height: 1px;
+  background: var(--rosa);
+  margin: 30px auto;
+}
+
+/* REGALO */
+
+.gift-card {
+  max-width: 480px;
+  margin: 35px auto 0;
+  padding: 40px 25px;
+  background: rgba(255,255,255,.85);
+  border-radius: 5px;
+}
+
+.alias {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  letter-spacing: 3px;
+  margin: 15px 0;
+}
+
+/* MENSAJES */
+
+.message-card {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid #e4d4cb;
+  border-radius: 8px;
+}
+
+.message-input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #e4d4cb;
+  border-radius: 5px;
+  background: rgba(250,246,242,.7);
+  color: var(--texto);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.message-input:focus {
+  border-color: var(--detalle);
+}
+
+textarea.message-input {
   min-height: 120px;
   resize: vertical;
 }
 
-.message-card {
-  max-width: 650px;
-  margin: auto;
-  padding: 30px;
-  border: 1px solid var(--rosa);
-  background: rgba(255,255,255,.6);
-}
-
 .messages-list {
-  max-width: 750px;
-  margin: 30px auto 0;
+  max-width: 650px;
+  margin: 35px auto;
+  text-align: left;
 }
 
 .saved-message {
-  background: white;
-  padding: 25px;
-  margin: 15px 0;
-  border: 1px solid #e8d7d2;
-  text-align: left;
-  overflow-wrap: break-word;
+  background: rgba(255,255,255,.88);
+  border-left: 2px solid var(--rosa);
+  padding: 20px;
+  margin: 18px 0;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
 }
 
 .saved-message h3 {
-  font-size: 25px;
-  color: var(--oscuro);
-  margin-bottom: 10px;
+  color: var(--detalle);
+  font-size: 24px;
+  margin: 0 0 8px;
 }
 
 .saved-message p {
+  margin: 0;
   white-space: pre-wrap;
 }
 
 .no-messages {
-  padding: 25px;
+  font-size: 13px;
   opacity: .7;
 }
 
-#contador {
-  font-size: 30px;
-  margin: 25px 0;
-  letter-spacing: 2px;
+/* FINAL */
+
+.final-section {
+  padding: 100px 20px;
+  text-align: center;
 }
 
-footer {
-  background: var(--oscuro);
-  color: white;
-  padding: 35px 20px;
-}
-
-footer p {
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-#sorpresa {
-  display: none;
-  padding: 30px;
-  margin: 20px auto;
-  max-width: 600px;
+.final-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  background: white;
-  border: 1px solid var(--rosa);
+  font-size: clamp(35px, 6vw, 60px);
+  color: var(--detalle);
+  font-weight: 400;
+  line-height: 1.3;
 }
 
-@media(max-width:600px) {
+/* CELULARES */
+
+@media(max-width:700px) {
+
   section {
-    padding: 55px 16px;
+    padding: 70px 20px;
   }
 
-  h2 {
-    font-size: 35px;
+  .hero-photo {
+    height: 430px;
+    max-width: 340px;
   }
 
-  .hero h1 {
+  .hero-title {
+    font-size: 78px;
     letter-spacing: 2px;
   }
 
-  .hero .sub {
-    letter-spacing: 3px;
+  .hero-name {
+    letter-spacing: 5px;
+    font-size: 30px;
   }
 
-  .galeria {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+  .section-title {
+    font-size: 45px;
   }
 
-  .galeria img {
-    height: 220px;
+  .gallery-page {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
-  .caja, .message-card {
-    padding: 20px 15px;
+  .gallery-page img {
+    height: 230px;
+  }
+
+  .gallery-page img:nth-child(even) {
+    margin-top: 20px;
+  }
+
+  .event-card {
+    padding: 45px 20px;
+  }
+
+  .event-day {
+    font-size: 90px;
+  }
+
+  .event-month {
+    font-size: 23px;
+  }
+
+  .event-time {
+    font-size: 32px;
+  }
+
+  .alias {
+    font-size: 32px;
+  }
+
+  .message-card {
+    padding: 30px 20px;
+  }
+
+  .playlist-card {
+    padding: 15px;
+  }
+
+  .playlist-heading {
+    font-size: 30px;
+  }
+
+  body {
+    background-attachment: scroll, scroll;
+  }
+}
+
+@media(max-width:380px) {
+  .gallery-page img {
+    height: 190px;
+  }
+
+  .hero-photo {
+    height: 370px;
   }
 }
 </style>
@@ -314,306 +524,470 @@ footer p {
 
 <body>
 
-<!-- 1 PORTADA -->
-<header class="hero">
-  <p class="sub">MIS QUINCE AÑOS</p>
-  <h1>Francesca</h1>
-  <div class="decoracion">♡</div>
-  <p class="fecha">28 · 11 · 2026</p>
-  <a href="#invitacion" class="btn">DESCUBRÍ MI INVITACIÓN</a>
-</header>
+<!-- 1. PORTADA -->
 
-<!-- 2 INVITACION -->
-<section id="invitacion" class="fondo">
-  <div class="contenedor">
-    <div class="decoracion">✧</div>
-    <h2>Una noche especial</h2>
+<section class="hero">
 
-    <p class="texto-invitacion">
-      Hay momentos que se sueñan toda la vida,
-      y este es uno de ellos.<br><br>
-      Quiero compartir con vos una noche inolvidable,
-      llena de alegría, amor y magia.<br><br>
-      Te invito a celebrar mis quince años.
-    </p>
+  <p class="hero-top">Una celebración · Un sueño</p>
 
-    <div class="decoracion">♡</div>
-  </div>
+  <img class="hero-photo" src="portada.jpeg" alt="Francesca">
+
+  <h1 class="hero-title">MIS XV</h1>
+
+  <div class="hero-name">FRANCESCA</div>
+
+  <p class="hero-text">
+    Quince años de sueños, momentos inolvidables
+    y muchas historias por compartir.
+    Te invito a celebrar conmigo.
+  </p>
+
+  <a href="#historia" class="btn">DESCUBRIR</a>
+
 </section>
 
-<!-- 3 CUENTA REGRESIVA -->
-<section>
-  <div class="contenedor">
-    <h2>La cuenta regresiva</h2>
-    <p>Falta poquito para celebrar juntos</p>
-    <div id="contador">Calculando...</div>
+<!-- 2. MI HISTORIA -->
+
+<section id="historia" class="center">
+
+  <p class="eyebrow">Un viaje en el tiempo</p>
+
+  <h2 class="section-title">Mi historia</h2>
+
+  <p class="section-description">
+    Cada fotografía guarda un recuerdo, una sonrisa
+    y un pedacito de mi vida.
+    Gracias por acompañarme en este viaje.
+  </p>
+
+  <div class="gallery-wrapper" id="historiaGallery">
+    <div class="gallery-track"></div>
   </div>
+
+  <div class="gallery-controls">
+
+    <button class="arrow" onclick="mover('historiaGallery',-1)">‹</button>
+
+    <span class="counter" id="historiaCounter"></span>
+
+    <button class="arrow" onclick="mover('historiaGallery',1)">›</button>
+
+  </div>
+
 </section>
 
-<!-- 4 FOTOS -->
-<section class="fondo">
-  <div class="contenedor">
-    <h2>Mis recuerdos</h2>
-    <p>Un recorrido por algunos momentos de mi vida</p>
-    <div class="galeria" id="galeriaH"></div>
+<!-- 3. MI ARTE -->
+
+<section class="center" id="arte">
+
+  <p class="eyebrow">Mi pequeño universo</p>
+
+  <h2 class="section-title">Mi arte</h2>
+
+  <p class="section-description">
+    Un espacio para mostrar aquello que imagino,
+    creo y expreso a través de mis dibujos e instrumentos musicales.
+  </p>
+
+  <div class="gallery-wrapper" id="arteGallery">
+    <div class="gallery-track"></div>
   </div>
+
+  <div class="gallery-controls">
+
+    <button class="arrow" onclick="mover('arteGallery',-1)">‹</button>
+
+    <span class="counter" id="arteCounter"></span>
+
+    <button class="arrow" onclick="mover('arteGallery',1)">›</button>
+
+  </div>
+
 </section>
 
-<!-- 5 GALERIA ADICIONAL -->
-<section>
-  <div class="contenedor">
-    <h2>Momentos</h2>
-    <div class="galeria" id="galeriaA"></div>
+<!-- 4. VIDEOS -->
+
+<section class="center" id="videos">
+
+  <p class="eyebrow">Un recuerdo especial</p>
+
+  <h2 class="section-title">Un poquito de mí</h2>
+
+  <p class="section-description">
+    Algunos momentos que quiero compartir con ustedes.
+  </p>
+
+  <div class="video-gallery">
+
+    <div class="video-track" id="videoTrack"></div>
+
   </div>
+
+  <div class="gallery-controls">
+
+    <button class="arrow" onclick="moverVideo(-1)">‹</button>
+
+    <span class="counter" id="videoCounter"></span>
+
+    <button class="arrow" onclick="moverVideo(1)">›</button>
+
+  </div>
+
 </section>
 
-<!-- 6 VIDEOS -->
-<section class="fondo">
-  <div class="contenedor">
-    <h2>Un poquito de mí</h2>
+<!-- 5. PLAYLIST SPOTIFY -->
 
-    <div class="video-grid">
-      <video controls playsinline preload="metadata">
-        <source src="video.mp4" type="video/mp4">
-      </video>
+<section class="center" id="playlist">
 
-      <video controls playsinline preload="metadata">
-        <source src="video1.mp4" type="video/mp4">
-      </video>
+  <p class="eyebrow">Canciones que me acompañan</p>
 
-      <video controls playsinline preload="metadata">
-        <source src="video2.mp4" type="video/mp4">
-      </video>
+  <h2 class="section-title">Mi música</h2>
 
-      <video controls playsinline preload="metadata">
-        <source src="video3.mp4" type="video/mp4">
-      </video>
+  <p class="section-description">
+    Un poquito de las canciones que me gustan,
+    que me acompañan y que forman parte de mí.
+  </p>
 
-      <video controls playsinline preload="metadata">
-        <source src="video4.mp4" type="video/mp4">
-      </video>
-    </div>
+  <div class="playlist-card">
+
+    <h3 class="playlist-heading">♡ Mi playlist ♡</h3>
+
+    <iframe
+      src="https://open.spotify.com/embed/playlist/2hzWDBpejdgmqqUbDigwRk?utm_source=generator&theme=0"
+      height="352"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+
   </div>
+
 </section>
 
-<!-- 7 MUSICA -->
-<section>
-  <div class="contenedor">
-    <h2>Mi música</h2>
-    <p>Una canción para acompañar este momento</p>
+<!-- 6. FECHA -->
 
-    <div style="max-width:600px;margin:25px auto">
-      <iframe
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO"
-        width="100%"
-        height="352"
-        style="border-radius:12px;border:0"
-        loading="lazy"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-      </iframe>
-    </div>
-  </div>
-</section>
+<section class="center" id="evento">
 
-<!-- 8 EVENTO -->
-<section class="fondo" id="evento">
-  <div class="contenedor">
-    <h2>Te espero</h2>
+  <p class="eyebrow">Una fecha para recordar</p>
 
-    <div class="datos">
-      <div class="dato">
-        <h3>Fecha</h3>
-        <p>28 de noviembre de 2026</p>
-      </div>
+  <h2 class="section-title">MIS XV</h2>
 
-      <div class="dato">
-        <h3>Hora</h3>
-        <p>18:00 hs</p>
-      </div>
+  <div class="event-card">
 
-      <div class="dato">
-        <h3>Lugar</h3>
-        <p>Zorzal 3725<br>Campo Salles, Buenos Aires</p>
-      </div>
-    </div>
+    <p class="event-label">Te invito a celebrar conmigo</p>
+
+    <div class="divider"></div>
+
+    <p class="event-label">SÁBADO</p>
+
+    <div class="event-day">28</div>
+
+    <div class="event-month">NOVIEMBRE · 2026</div>
+
+    <div class="divider"></div>
+
+    <p class="event-label">HORARIO</p>
+
+    <div class="event-time">18:00 HS</div>
+
+    <div class="divider"></div>
+
+    <p class="event-label">LUGAR</p>
+
+    <div class="event-place">Zorzal 3725</div>
+
+    <p>Campo Salles · Buenos Aires</p>
 
     <a class="btn"
-       href="https://www.google.com/maps/search/?api=1&query=Zorzal+3725+Campo+Salles+Buenos+Aires"
+       href="https://www.google.com/maps/place/Zorzal+3725,+Campo+Salles,+Provincia+de+Buenos+Aires/@-33.4136275,-60.2461301,17z/data=!3m1!4b1!4m6!3m5!1s0x95b760c28ddd7fe3:0x7697bcdcaf1d62e2!8m2!3d-33.413632!4d-60.2435552!16s%2Fg%2F11jyjl12b9?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D"
        target="_blank"
-       rel="noopener">
-       VER UBICACIÓN
+       rel="noopener noreferrer">
+      CÓMO LLEGAR
     </a>
+
   </div>
+
 </section>
 
-<!-- 9 ALIAS -->
-<section>
-  <div class="contenedor">
-    <h2>Un regalo especial</h2>
-    <p>Si querés hacerme un regalo, podés hacerlo a través de mi alias</p>
+<!-- 7. MI REGALO -->
 
-    <div class="caja">
-      <h3 style="font-size:32px">franud</h3>
-      <button class="btn" onclick="copiarAlias()">COPIAR ALIAS</button>
-    </div>
-  </div>
-</section>
+<section class="center" id="regalo">
 
-<!-- 10 MENSAJES -->
-<section class="fondo" id="mensajes">
-  <div class="contenedor">
-    <h2>Dejame tu mensaje</h2>
-    <p>Me encantaría guardar tus palabras para recordar esta noche</p>
+  <p class="eyebrow">Un detalle especial</p>
 
-    <div class="message-card">
-      <input
-        type="text"
-        id="nombreMensaje"
-        placeholder="Tu nombre"
-        maxlength="60"
-        autocomplete="name">
+  <h2 class="section-title">Mi regalo</h2>
 
-      <textarea
-        id="textoMensaje"
-        placeholder="Escribime unas palabras..."
-        maxlength="500"></textarea>
+  <p class="section-description">
+    Tu presencia es mi regalo más importante.
+    Si deseas regalarme algo más,
+    te comparto mi alias.
+  </p>
 
-      <button class="btn" id="botonMensaje" onclick="guardarMensaje()">
-        GUARDAR MENSAJE
-      </button>
-    </div>
+  <div class="gift-card">
 
-    <div class="messages-list" id="listaMensajes">
-      <p class="no-messages">Cargando mensajes...</p>
-    </div>
-  </div>
-</section>
+    <p class="eyebrow">ALIAS</p>
 
-<!-- 11 SORPRESA -->
-<section>
-  <div class="contenedor">
-    <h2>Una sorpresa</h2>
+    <div class="alias" id="alias">franud</div>
 
-    <button class="btn" onclick="mostrarSorpresa()">
-      ABRIR
+    <button class="btn" onclick="copiarAlias()">
+      COPIAR ALIAS
     </button>
 
-    <div id="sorpresa">
-      ¡Gracias por ser parte de uno de los momentos más importantes de mi vida! ♡
-    </div>
   </div>
+
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>FRANCESCA · MIS XV · 2026</p>
-  <p style="margin-top:12px">Gracias por acompañarme ♡</p>
-</footer>
+<!-- 8. PALABRAS Y MENSAJES -->
+
+<section class="center" id="mensajes">
+
+  <p class="eyebrow">Palabras que quedan en el corazón</p>
+
+  <h2 class="section-title">Dejame un mensaje</h2>
+
+  <p class="section-description">
+    Me encantaría guardar unas palabras tuyas
+    para recordar este momento tan especial.
+  </p>
+
+  <div class="message-card">
+
+    <input
+      type="text"
+      id="nombreMensaje"
+      class="message-input"
+      placeholder="Tu nombre"
+      maxlength="60">
+
+    <textarea
+      id="textoMensaje"
+      class="message-input"
+      placeholder="Escribí tu mensaje para Francesca..."
+      maxlength="500"></textarea>
+
+    <button class="btn" id="botonMensaje" onclick="guardarMensaje()">
+      GUARDAR MENSAJE
+    </button>
+
+  </div>
+
+  <div class="messages-list" id="listaMensajes">
+    <p class="no-messages">Cargando mensajes...</p>
+  </div>
+
+</section>
+
+<!-- 9. FINAL -->
+
+<section class="final-section">
+
+  <div class="divider"></div>
+
+  <p class="final-title">
+    Gracias por ser parte<br>
+    de mi historia ♡
+  </p>
+
+  <p class="eyebrow">FIN</p>
+
+  <div class="divider"></div>
+
+</section>
 
 <script>
+
 /* ==========================================
-   CONFIGURACIÓN DE MENSAJES
+   GALERIAS DE FOTOS
 ========================================== */
+
+const galerias = {};
+
+function crearGaleria(id, prefijo, cantidad, contadorId, claseExtra = '') {
+
+  const contenedor = document.getElementById(id);
+  const track = contenedor.querySelector('.gallery-track');
+
+  const totalPaginas = Math.ceil(cantidad / 4);
+
+  galerias[id] = {
+    pagina: 0,
+    total: totalPaginas,
+    contador: document.getElementById(contadorId)
+  };
+
+  for (let pagina = 0; pagina < totalPaginas; pagina++) {
+
+    const slide = document.createElement('div');
+
+    slide.className = 'gallery-page ' + claseExtra;
+
+    const inicio = pagina * 4 + 1;
+    const fin = Math.min(inicio + 3, cantidad);
+
+    for (let numero = inicio; numero <= fin; numero++) {
+
+      const img = document.createElement('img');
+
+      img.src = prefijo + numero + '.jpeg';
+      img.alt = prefijo + numero;
+      img.loading = 'lazy';
+
+      img.onerror = function() {
+        this.style.display = 'none';
+      };
+
+      slide.appendChild(img);
+
+    }
+
+    track.appendChild(slide);
+
+  }
+
+  actualizar(id);
+}
+
+function actualizar(id) {
+
+  const contenedor = document.getElementById(id);
+  const track = contenedor.querySelector('.gallery-track');
+
+  const datos = galerias[id];
+
+  track.style.transform =
+    'translateX(-' + (datos.pagina * 100) + '%)';
+
+  datos.contador.textContent =
+    (datos.pagina + 1) + ' / ' + datos.total;
+
+}
+
+function mover(id, direccion) {
+
+  const datos = galerias[id];
+
+  datos.pagina += direccion;
+
+  if (datos.pagina < 0) {
+    datos.pagina = datos.total - 1;
+  }
+
+  if (datos.pagina >= datos.total) {
+    datos.pagina = 0;
+  }
+
+  actualizar(id);
+}
+
+/* HISTORIA: H1 A H130 */
+
+crearGaleria(
+  'historiaGallery',
+  'H',
+  130,
+  'historiaCounter'
+);
+
+/* ARTE: A1 A A80 */
+
+crearGaleria(
+  'arteGallery',
+  'A',
+  80,
+  'arteCounter',
+  'art-page'
+);
+
+/* ==========================================
+   VIDEOS
+========================================== */
+
+const videos = [
+  'video.mp4',
+  'video1.mp4',
+  'video2.mp4',
+  'video3.mp4',
+  'video4.mp4'
+];
+
+let videoActual = 0;
+
+const videoTrack = document.getElementById('videoTrack');
+const videoCounter = document.getElementById('videoCounter');
+
+videos.forEach(function(nombre) {
+
+  const slide = document.createElement('div');
+
+  slide.className = 'video-slide';
+
+  const video = document.createElement('video');
+
+  video.controls = true;
+  video.preload = 'none';
+  video.playsInline = true;
+
+  const source = document.createElement('source');
+
+  source.src = nombre;
+  source.type = 'video/mp4';
+
+  video.appendChild(source);
+
+  slide.appendChild(video);
+
+  videoTrack.appendChild(slide);
+
+});
+
+function actualizarVideo() {
+
+  videoTrack.style.transform =
+    'translateX(-' + (videoActual * 100) + '%)';
+
+  videoCounter.textContent =
+    (videoActual + 1) + ' / ' + videos.length;
+
+  const todos = videoTrack.querySelectorAll('video');
+
+  todos.forEach(function(video, indice) {
+
+    if (indice !== videoActual) {
+      video.pause();
+    }
+
+  });
+
+}
+
+function moverVideo(direccion) {
+
+  videoActual += direccion;
+
+  if (videoActual < 0) {
+    videoActual = videos.length - 1;
+  }
+
+  if (videoActual >= videos.length) {
+    videoActual = 0;
+  }
+
+  actualizarVideo();
+}
+
+actualizarVideo();
+
+/* ==========================================
+   MENSAJES - GOOGLE APPS SCRIPT
+========================================== */
+
+/* DIRECCIÓN DE TU APLICACIÓN */
 
 const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxb8xMFxv9rNbc_BXZ2l231KDvFtzHTiS42RyNUz8OPrcQgEWc8i79Nj7SV3TG_BFtdIQ/exec";
 
-/* ==========================================
-   GALERÍAS
-========================================== */
-
-function crearGaleria(id, prefijo, cantidad) {
-  const galeria = document.getElementById(id);
-
-  for (let i = 1; i <= cantidad; i++) {
-    const img = document.createElement('img');
-
-    img.src = prefijo + i + '.jpeg';
-    img.alt = 'Recuerdo ' + i;
-    img.loading = 'lazy';
-
-    img.onerror = function() {
-      this.style.display = 'none';
-    };
-
-    galeria.appendChild(img);
-  }
-}
-
-crearGaleria('galeriaH', 'H', 130);
-crearGaleria('galeriaA', 'A', 80);
-
-/* ==========================================
-   CUENTA REGRESIVA
-========================================== */
-
-function actualizarContador() {
-  const fecha = new Date('2026-11-28T18:00:00-03:00').getTime();
-  const ahora = Date.now();
-  const diferencia = fecha - ahora;
-
-  const contador = document.getElementById('contador');
-
-  if (diferencia <= 0) {
-    contador.textContent = '¡Llegó el gran día! ♡';
-    return;
-  }
-
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
-  const segundos = Math.floor((diferencia / 1000) % 60);
-
-  contador.textContent =
-    dias + ' días · ' +
-    horas + ' hs · ' +
-    minutos + ' min · ' +
-    segundos + ' seg';
-}
-
-actualizarContador();
-setInterval(actualizarContador, 1000);
-
-/* ==========================================
-   COPIAR ALIAS
-========================================== */
-
-function copiarAlias() {
-  const alias = 'franud';
-
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(alias)
-      .then(() => alert('¡Alias copiado! ♡ ' + alias))
-      .catch(() => copiarManual(alias));
-  } else {
-    copiarManual(alias);
-  }
-}
-
-function copiarManual(texto) {
-  const auxiliar = document.createElement('textarea');
-  auxiliar.value = texto;
-  auxiliar.style.position = 'fixed';
-  auxiliar.style.opacity = '0';
-
-  document.body.appendChild(auxiliar);
-  auxiliar.select();
-
-  try {
-    document.execCommand('copy');
-    alert('¡Alias copiado! ♡ ' + texto);
-  } catch (error) {
-    alert('Copiá manualmente el alias: ' + texto);
-  }
-
-  auxiliar.remove();
-}
-
-/* ==========================================
-   MENSAJES - GOOGLE SHEETS
-   UNA SOLA VERSIÓN DE LAS FUNCIONES
-========================================== */
+/* ENVIAR MENSAJE */
 
 async function guardarMensaje() {
+
   const nombreInput = document.getElementById('nombreMensaje');
   const mensajeInput = document.getElementById('textoMensaje');
   const boton = document.getElementById('botonMensaje');
@@ -635,6 +1009,7 @@ async function guardarMensaje() {
   boton.textContent = 'ENVIANDO...';
 
   try {
+
     await fetch(URL_SCRIPT, {
       method: 'POST',
       mode: 'no-cors',
@@ -650,36 +1025,69 @@ async function guardarMensaje() {
     nombreInput.value = '';
     mensajeInput.value = '';
 
-    alert('¡Gracias por dejar tu mensaje! ♡');
+    alert('Gracias por dejar tu mensaje ♡');
 
     setTimeout(function() {
       mostrarMensajes();
     }, 2000);
 
   } catch (error) {
-    console.error(error);
-    alert('No se pudo enviar. Revisá tu conexión e intentá nuevamente.');
-  }
 
-  boton.disabled = false;
-  boton.textContent = 'GUARDAR MENSAJE';
+    console.error('Error al enviar mensaje:', error);
+
+    alert('No se pudo enviar. Revisá tu conexión e intentá nuevamente.');
+
+  } finally {
+
+    boton.disabled = false;
+    boton.textContent = 'GUARDAR MENSAJE';
+
+  }
 }
 
+/* LEER MENSAJES DE GOOGLE SHEETS */
+
 function mostrarMensajes() {
+
   const contenedor = document.getElementById('listaMensajes');
 
   contenedor.innerHTML =
     '<p class="no-messages">Cargando mensajes...</p>';
 
-  const callbackName = 'mensajesCallback_' + Date.now();
+  const callbackName =
+    'mensajesCallback_' + Date.now() + '_' +
+    Math.floor(Math.random() * 10000);
 
   const script = document.createElement('script');
 
+  let terminado = false;
+
+  function limpiar() {
+
+    if (terminado) return;
+
+    terminado = true;
+
+    delete window[callbackName];
+
+    script.remove();
+
+  }
+
   window[callbackName] = function(datos) {
+
     contenedor.innerHTML = '';
 
-    if (!datos || !datos.ok || !datos.mensajes ||
-        datos.mensajes.length === 0) {
+    if (!datos || !datos.ok || !Array.isArray(datos.mensajes)) {
+
+      contenedor.innerHTML =
+        '<p class="no-messages">No se pudieron cargar los mensajes.</p>';
+
+      limpiar();
+      return;
+    }
+
+    if (datos.mensajes.length === 0) {
 
       contenedor.innerHTML =
         '<p class="no-messages">Todavía no hay mensajes.</p>';
@@ -689,59 +1097,94 @@ function mostrarMensajes() {
     }
 
     datos.mensajes.forEach(function(item) {
+
       const tarjeta = document.createElement('div');
       tarjeta.className = 'saved-message';
 
       const nombre = document.createElement('h3');
-      nombre.textContent = item.nombre;
+      nombre.textContent = item.nombre || 'Invitado';
 
       const texto = document.createElement('p');
-      texto.textContent = item.mensaje;
+      texto.textContent = item.mensaje || '';
 
       tarjeta.appendChild(nombre);
       tarjeta.appendChild(texto);
 
       contenedor.appendChild(tarjeta);
+
     });
 
     limpiar();
+
   };
 
   script.src = URL_SCRIPT +
-    '?callback=' + callbackName +
+    '?callback=' + encodeURIComponent(callbackName) +
     '&t=' + Date.now();
 
   script.onerror = function() {
+
     contenedor.innerHTML =
-      '<p class="no-messages">No se pudieron cargar los mensajes. Intentá más tarde.</p>';
+      '<p class="no-messages">No se pudieron cargar los mensajes. Intentá nuevamente.</p>';
 
     limpiar();
+
   };
 
   document.body.appendChild(script);
 
-  function limpiar() {
-    delete window[callbackName];
-    script.remove();
-  }
 }
 
-/* CARGAR MENSAJES AL ABRIR */
+/* CARGAR MENSAJES AL ABRIR LA INVITACIÓN */
+
 mostrarMensajes();
 
 /* ==========================================
-   SORPRESA
+   COPIAR ALIAS
 ========================================== */
 
-function mostrarSorpresa() {
-  const elemento = document.getElementById('sorpresa');
+function copiarAlias() {
 
-  if (elemento.style.display === 'block') {
-    elemento.style.display = 'none';
+  const alias = document.getElementById('alias').innerText;
+
+  if (navigator.clipboard && window.isSecureContext) {
+
+    navigator.clipboard.writeText(alias)
+      .then(() => alert('¡Alias copiado!'))
+      .catch(() => copiarAlternativo(alias));
+
   } else {
-    elemento.style.display = 'block';
+
+    copiarAlternativo(alias);
+
   }
 }
+
+function copiarAlternativo(texto) {
+
+  const area = document.createElement('textarea');
+
+  area.value = texto;
+  area.style.position = 'fixed';
+  area.style.opacity = '0';
+
+  document.body.appendChild(area);
+  area.select();
+
+  try {
+
+    document.execCommand('copy');
+    alert('¡Alias copiado!');
+
+  } catch (e) {
+
+    alert('Copiá manualmente el alias: ' + texto);
+
+  }
+
+  area.remove();
+}
+
 </script>
 
 </body>
