@@ -152,7 +152,7 @@ p {
   margin: 0 auto;
 }
 
-/* GALERIAS DE FOTOS */
+/* GALERIAS */
 
 .gallery-wrapper {
   max-width: 1000px;
@@ -253,7 +253,7 @@ p {
   background: #000;
 }
 
-/* PLAYLIST SPOTIFY */
+/* SPOTIFY */
 
 .playlist-card {
   max-width: 750px;
@@ -404,11 +404,18 @@ textarea.message-input {
 
 .saved-message p {
   margin: 0;
+  white-space: pre-wrap;
 }
 
 .no-messages {
   font-size: 13px;
   opacity: .7;
+}
+
+.message-status {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 20px;
 }
 
 /* FINAL */
@@ -729,7 +736,7 @@ textarea.message-input {
 
 </section>
 
-<!-- 8. PALABRAS Y MENSAJES -->
+<!-- 8. MENSAJES -->
 
 <section class="center" id="mensajes">
 
@@ -749,7 +756,8 @@ textarea.message-input {
       id="nombreMensaje"
       class="message-input"
       placeholder="Tu nombre"
-      maxlength="60">
+      maxlength="60"
+      autocomplete="name">
 
     <textarea
       id="textoMensaje"
@@ -760,6 +768,8 @@ textarea.message-input {
     <button class="btn" onclick="guardarMensaje()">
       GUARDAR MENSAJE
     </button>
+
+    <p id="estadoMensaje" class="message-status" aria-live="polite"></p>
 
   </div>
 
@@ -863,7 +873,7 @@ function mover(id, direccion) {
   actualizar(id);
 }
 
-/* HISTORIA: H1 A H130 */
+/* HISTORIA H1 A H130 */
 
 crearGaleria(
   'historiaGallery',
@@ -872,7 +882,7 @@ crearGaleria(
   'historiaCounter'
 );
 
-/* ARTE: A1 A A80 */
+/* ARTE A1 A A80 */
 
 crearGaleria(
   'arteGallery',
@@ -895,7 +905,6 @@ const videos = [
 let videoActual = 0;
 
 const videoTrack = document.getElementById('videoTrack');
-
 const videoCounter = document.getElementById('videoCounter');
 
 videos.forEach(function(nombre) {
@@ -916,9 +925,7 @@ videos.forEach(function(nombre) {
   source.type = 'video/mp4';
 
   video.appendChild(source);
-
   slide.appendChild(video);
-
   videoTrack.appendChild(slide);
 
 });
@@ -960,68 +967,132 @@ function moverVideo(direccion) {
 
 actualizarVideo();
 
-/* MENSAJES PROVISIONALES */
+/* MENSAJES: GUARDADO LOCAL */
+
+const CLAVE_MENSAJES = 'mensajesFrancesca';
+
+function obtenerMensajes() {
+
+  try {
+
+    const datos = localStorage.getItem(CLAVE_MENSAJES);
+
+    if (!datos) {
+      return [];
+    }
+
+    const mensajes = JSON.parse(datos);
+
+    return Array.isArray(mensajes) ? mensajes : [];
+
+  } catch (error) {
+
+    console.error('Error al leer mensajes:', error);
+
+    return [];
+
+  }
+
+}
 
 function guardarMensaje() {
 
-  const nombre = document.getElementById('nombreMensaje').value.trim();
-  const mensaje = document.getElementById('textoMensaje').value.trim();
+  const campoNombre = document.getElementById('nombreMensaje');
+  const campoTexto = document.getElementById('textoMensaje');
+  const estado = document.getElementById('estadoMensaje');
+
+  const nombre = campoNombre.value.trim();
+  const mensaje = campoTexto.value.trim();
+
+  estado.textContent = '';
 
   if (!nombre || !mensaje) {
-    alert('Por favor, completá tu nombre y tu mensaje.');
+
+    estado.textContent = 'Por favor, completá tu nombre y tu mensaje.';
     return;
+
   }
 
-  const mensajes = JSON.parse(
-    localStorage.getItem('mensajesFrancesca') || '[]'
-  );
+  if (nombre.length > 60 || mensaje.length > 500) {
+
+    estado.textContent = 'El nombre o el mensaje supera el límite permitido.';
+    return;
+
+  }
+
+  const mensajes = obtenerMensajes();
 
   mensajes.unshift({
     nombre: nombre,
-    mensaje: mensaje
+    mensaje: mensaje,
+    fecha: new Date().toISOString()
   });
 
-  localStorage.setItem(
-    'mensajesFrancesca',
-    JSON.stringify(mensajes)
-  );
+  try {
 
-  document.getElementById('nombreMensaje').value = '';
-  document.getElementById('textoMensaje').value = '';
+    localStorage.setItem(CLAVE_MENSAJES, JSON.stringify(mensajes));
 
-  mostrarMensajes();
+    /* Verificamos que se haya guardado */
 
-  alert('¡Tu mensaje quedó guardado en este navegador!');
+    const comprobacion = localStorage.getItem(CLAVE_MENSAJES);
+
+    if (!comprobacion) {
+      throw new Error('No se pudo verificar el guardado.');
+    }
+
+    campoNombre.value = '';
+    campoTexto.value = '';
+
+    mostrarMensajes();
+
+    estado.textContent = '¡Tu mensaje quedó guardado! Gracias por tus palabras ♡';
+
+  } catch (error) {
+
+    console.error('Error al guardar:', error);
+
+    estado.textContent =
+      'No se pudo guardar el mensaje en este navegador. ' +
+      'Revisá si el navegador permite guardar datos de este sitio.';
+
+  }
+
 }
 
 function mostrarMensajes() {
 
   const contenedor = document.getElementById('listaMensajes');
 
-  const mensajes = JSON.parse(
-    localStorage.getItem('mensajesFrancesca') || '[]'
-  );
+  const mensajes = obtenerMensajes();
 
   contenedor.innerHTML = '';
 
   if (mensajes.length === 0) {
 
-    contenedor.innerHTML =
-      '<p class="no-messages">Todavía no hay mensajes.</p>';
+    const texto = document.createElement('p');
+
+    texto.className = 'no-messages';
+    texto.textContent = 'Todavía no hay mensajes.';
+
+    contenedor.appendChild(texto);
 
     return;
+
   }
 
   mensajes.forEach(function(item) {
 
     const tarjeta = document.createElement('div');
+
     tarjeta.className = 'saved-message';
 
     const nombre = document.createElement('h3');
-    nombre.textContent = item.nombre;
+
+    nombre.textContent = item.nombre || 'Invitado';
 
     const texto = document.createElement('p');
-    texto.textContent = item.mensaje;
+
+    texto.textContent = item.mensaje || '';
 
     tarjeta.appendChild(nombre);
     tarjeta.appendChild(texto);
@@ -1029,7 +1100,10 @@ function mostrarMensajes() {
     contenedor.appendChild(tarjeta);
 
   });
+
 }
+
+/* Mostrar mensajes al abrir la página */
 
 mostrarMensajes();
 
@@ -1050,6 +1124,7 @@ function copiarAlias() {
     copiarAlternativo(alias);
 
   }
+
 }
 
 function copiarAlternativo(texto) {
@@ -1064,13 +1139,18 @@ function copiarAlternativo(texto) {
   area.select();
 
   try {
+
     document.execCommand('copy');
     alert('¡Alias copiado!');
+
   } catch (e) {
+
     alert('Copiá manualmente el alias: ' + texto);
+
   }
 
   area.remove();
+
 }
 
 </script>
